@@ -1,18 +1,16 @@
 import 'package:isar/isar.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:spoonacular/data/models/recipe.dart';
 import 'package:spoonacular/data/schemas/converters.dart';
 import 'package:spoonacular/data/schemas/isar_recipe.dart';
 import 'package:spoonacular/main.dart';
 
 class IsarService {
-  late Future<Isar> db;
+  late final Isar db;
 
-  IsarService() {
-    final dir = getApplicationDocumentsDirectory();
-    db = Isar.open(
-      [IsarRecipeSchema],
-      directory: dir.path,
-    );
+  Future<void> init() async {
+    final dir = await getApplicationDocumentsDirectory();
+    db = await Isar.open([IsarRecipeSchema], directory: dir.path);
   }
 
   Future<void> saveRecipe(Recipe recipe) async {

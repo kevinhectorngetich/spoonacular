@@ -38,16 +38,3 @@ abstract class _RecipeStore with Store {
     await IsarService().saveRecipe(recipe);
   }
 }
-
-
-
-// targets:
-//   $default:
-//     builders:
-//       freezed:
-//         options:
-//           runs_before:
-//             - isar:isar_generator
-//       isar:isar_generator:
-//         options:
-//           output: lib/isar.g.dart

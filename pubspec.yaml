@@ -27,6 +27,7 @@ dependencies:
   json_serializable: ^6.1.7
   isar: *isar_version
   isar_flutter_libs: *isar_version
+  path_provider: ^2.1.3
 
 dev_dependencies:
   flutter_test:
@@ -35,7 +36,6 @@ dev_dependencies:
   flutter_lints: ^3.0.0
   freezed: ^2.5.2
   build_runner: ^2.4.10
-  json_serializable: ^6.8.0
   isar_generator: *isar_version
 
 flutter:
