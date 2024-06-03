@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spoonacular/cart.dart';
+import 'package:spoonacular/screens/cart.dart';
 import 'package:spoonacular/constants/colors.dart';
 import 'package:spoonacular/constants/sized_box.dart';
 import 'package:spoonacular/constants/text_styles.dart';
