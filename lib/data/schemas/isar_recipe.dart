@@ -6,57 +6,56 @@ part 'isar_recipe.g.dart';
 class IsarRecipe {
   Id? id;
   late String title;
-  late String image;
-  late String imageType;
-  late int servings;
-  late int readyInMinutes;
-  late String license;
-  late String sourceName;
-  late String sourceUrl;
-  late String spoonacularSourceUrl;
-  late double healthScore;
-  late double spoonacularScore;
-  late double pricePerServing;
-  late bool cheap;
-  late bool dairyFree;
-  late bool glutenFree;
-  late bool ketogenic;
-  late bool lowFodmap;
-  late bool sustainable;
-  late bool vegan;
-  late bool vegetarian;
-  late bool veryHealthy;
-  late bool veryPopular;
-  late bool whole30;
-  late int weightWatcherSmartPoints;
-  late String gaps;
-  late String instructions;
-  late List<String> cuisines;
-  late List<String> dishTypes;
-  late List<String> diets;
-  late List<String> occasions;
+  String? image; // Nullable
+  String? imageType; // Nullable
+  int? servings; // Nullable
+  int? readyInMinutes; // Nullable
+  String? license; // Nullable
+  String? sourceName; // Nullable
+  String? sourceUrl; // Nullable
+  String? spoonacularSourceUrl; // Nullable
+  double? healthScore; // Nullable
+  double? spoonacularScore; // Nullable
+  double? pricePerServing; // Nullable
+  bool cheap = false; // Default value
+  bool dairyFree = false; // Default value
+  bool glutenFree = false; // Default value
+  bool ketogenic = false; // Default value
+  bool lowFodmap = false; // Default value
+  bool sustainable = false; // Default value
+  bool vegan = false; // Default value
+  bool vegetarian = false; // Default value
+  bool veryHealthy = false; // Default value
+  bool veryPopular = false; // Default value
+  bool whole30 = false; // Default value
+  int? weightWatcherSmartPoints; // Nullable
+  String? gaps; // Nullable
+  String? instructions; // Nullable
+  List<String> cuisines = []; // Default value
+  List<String> dishTypes = []; // Default value
+  List<String> diets = []; // Default value
+  List<String> occasions = []; // Default value
 
-  late List<IsarExtendedIngredient>
-      extendedIngredients; // Change to `List` without @Embedded()
+  List<IsarExtendedIngredient> extendedIngredients = []; // Default value
 
-  late String summary;
+  String? summary; // Nullable
 }
 
 @Embedded()
 class IsarExtendedIngredient {
-  late int id;
-  late String aisle;
-  late String image;
-  late String consistency;
+  int? id; // Nullable
+  String? aisle; // Nullable
+  String? image; // Nullable
+  String? consistency; // Nullable
   late String name;
-  late String nameClean;
-  late String original;
-  late String originalName;
-  late double amount;
-  late String unit;
-  late List<String> meta;
+  String? nameClean; // Nullable
+  String? original; // Nullable
+  String? originalName; // Nullable
+  double? amount; // Nullable
+  String? unit; // Nullable
+  List<String> meta = []; // Default value
 
-  late IsarMeasures measures; // Use `@Embedded` for nested objects
+  late IsarMeasures measures;
 }
 
 @Embedded()
@@ -67,7 +66,7 @@ class IsarMeasures {
 
 @Embedded()
 class IsarMeasure {
-  late double amount;
-  late String unitShort;
-  late String unitLong;
+  double? amount; // Nullable
+  String? unitShort; // Nullable
+  String? unitLong; // Nullable
 }

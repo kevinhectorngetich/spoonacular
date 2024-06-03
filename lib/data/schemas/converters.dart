@@ -113,13 +113,13 @@ IsarRecipe recipeToIsar(Recipe recipe) {
         ingredient.meta = e.meta;
         ingredient.measures = IsarMeasures()
           ..us = IsarMeasure()
-          ..us.amount = e.measures.us.amount
-          ..us.unitShort = e.measures.us.unitShort
-          ..us.unitLong = e.measures.us.unitLong
+          ..us.amount = e.measures?.us?.amount
+          ..us.unitShort = e.measures?.us?.unitShort
+          ..us.unitLong = e.measures?.us?.unitLong
           ..metric = IsarMeasure()
-          ..metric.amount = e.measures.metric.amount
-          ..metric.unitShort = e.measures.metric.unitShort
-          ..metric.unitLong = e.measures.metric.unitLong;
+          ..metric.amount = e.measures?.metric?.amount
+          ..metric.unitShort = e.measures?.metric?.unitShort
+          ..metric.unitLong = e.measures?.metric?.unitLong;
 
         return ingredient;
       },

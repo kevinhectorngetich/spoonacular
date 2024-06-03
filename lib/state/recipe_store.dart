@@ -8,17 +8,26 @@ part 'recipe_store.g.dart';
 class RecipeStore = _RecipeStore with _$RecipeStore;
 
 abstract class _RecipeStore with Store {
+  final IsarService isarService;
+
+  _RecipeStore({required this.isarService});
+
   @observable
   ObservableList<Recipe> recipes = ObservableList<Recipe>();
 
+  @observable
+  bool isLoading = false;
+
   @action
   Future<void> fetchRecipes() async {
+    isLoading = true;
     // Check for existing recipes in Isar
-    final isarRecipes = await IsarService().getRecipes();
+    final isarRecipes = await isarService.getRecipes();
 
     if (isarRecipes.isNotEmpty) {
       // Display recipes from Isar
       recipes.replaceRange(0, 0, isarRecipes);
+      isLoading = false;
       return;
     }
 
@@ -28,13 +37,14 @@ abstract class _RecipeStore with Store {
 
     // Save fetched recipes to Isar
     for (final recipe in fetchedRecipes) {
-      await IsarService().saveRecipe(recipe);
+      await isarService.saveRecipe(recipe);
     }
+    isLoading = false;
   }
 
   @action
   Future<void> saveRecipe(Recipe recipe) async {
     // Call your IsarService to save the recipe
-    await IsarService().saveRecipe(recipe);
+    await isarService.saveRecipe(recipe);
   }
 }

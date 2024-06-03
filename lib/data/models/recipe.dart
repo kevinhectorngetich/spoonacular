@@ -8,37 +8,37 @@ class Recipe with _$Recipe {
   const factory Recipe({
     required int id,
     required String title,
-    required String image,
-    required String imageType,
-    required int servings,
-    required int readyInMinutes,
-    required String license,
-    required String sourceName,
-    required String sourceUrl,
-    required String spoonacularSourceUrl,
-    required double healthScore,
-    required double spoonacularScore,
-    required double pricePerServing,
-    required bool cheap,
-    required bool dairyFree,
-    required bool glutenFree,
-    required bool ketogenic,
-    required bool lowFodmap,
-    required bool sustainable,
-    required bool vegan,
-    required bool vegetarian,
-    required bool veryHealthy,
-    required bool veryPopular,
-    required bool whole30,
-    required int weightWatcherSmartPoints,
-    required String gaps,
-    required String instructions,
-    required List<String> cuisines,
-    required List<String> dishTypes,
-    required List<String> diets,
-    required List<String> occasions,
-    required List<ExtendedIngredient> extendedIngredients,
-    required String summary,
+    String? image,
+    String? imageType,
+    int? servings,
+    int? readyInMinutes,
+    String? license,
+    String? sourceName,
+    String? sourceUrl,
+    String? spoonacularSourceUrl,
+    double? healthScore,
+    double? spoonacularScore,
+    double? pricePerServing,
+    @Default(false) bool cheap,
+    @Default(false) bool dairyFree,
+    @Default(false) bool glutenFree,
+    @Default(false) bool ketogenic,
+    @Default(false) bool lowFodmap,
+    @Default(false) bool sustainable,
+    @Default(false) bool vegan,
+    @Default(false) bool vegetarian,
+    @Default(false) bool veryHealthy,
+    @Default(false) bool veryPopular,
+    @Default(false) bool whole30,
+    int? weightWatcherSmartPoints,
+    String? gaps,
+    String? instructions,
+    @Default([]) List<String> cuisines,
+    @Default([]) List<String> dishTypes,
+    @Default([]) List<String> diets,
+    @Default([]) List<String> occasions,
+    @Default([]) List<ExtendedIngredient> extendedIngredients,
+    String? summary,
   }) = _Recipe;
 
   factory Recipe.fromJson(Map<String, dynamic> json) => _$RecipeFromJson(json);
@@ -47,18 +47,18 @@ class Recipe with _$Recipe {
 @freezed
 class ExtendedIngredient with _$ExtendedIngredient {
   const factory ExtendedIngredient({
-    required int id,
-    required String aisle,
-    required String image,
-    required String consistency,
+    int? id,
+    String? aisle,
+    String? image,
+    String? consistency,
     required String name,
-    required String nameClean,
-    required String original,
-    required String originalName,
-    required double amount,
-    required String unit,
-    required List<String> meta,
-    required Measures measures,
+    String? nameClean,
+    String? original,
+    String? originalName,
+    double? amount,
+    String? unit,
+    @Default([]) List<String> meta,
+    Measures? measures,
   }) = _ExtendedIngredient;
 
   factory ExtendedIngredient.fromJson(Map<String, dynamic> json) =>
@@ -68,8 +68,8 @@ class ExtendedIngredient with _$ExtendedIngredient {
 @freezed
 class Measures with _$Measures {
   const factory Measures({
-    required Measure us,
-    required Measure metric,
+    Measure? us,
+    Measure? metric,
   }) = _Measures;
 
   factory Measures.fromJson(Map<String, dynamic> json) =>
@@ -79,9 +79,9 @@ class Measures with _$Measures {
 @freezed
 class Measure with _$Measure {
   const factory Measure({
-    required double amount,
-    required String unitShort,
-    required String unitLong,
+    double? amount,
+    String? unitShort,
+    String? unitLong,
   }) = _Measure;
 
   factory Measure.fromJson(Map<String, dynamic> json) =>

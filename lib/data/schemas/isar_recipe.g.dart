@@ -233,11 +233,36 @@ int _isarRecipeEstimateSize(
           IsarExtendedIngredientSchema.estimateSize(value, offsets, allOffsets);
     }
   }
-  bytesCount += 3 + object.gaps.length * 3;
-  bytesCount += 3 + object.image.length * 3;
-  bytesCount += 3 + object.imageType.length * 3;
-  bytesCount += 3 + object.instructions.length * 3;
-  bytesCount += 3 + object.license.length * 3;
+  {
+    final value = object.gaps;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.image;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.imageType;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.instructions;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.license;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
   bytesCount += 3 + object.occasions.length * 3;
   {
     for (var i = 0; i < object.occasions.length; i++) {
@@ -245,10 +270,30 @@ int _isarRecipeEstimateSize(
       bytesCount += value.length * 3;
     }
   }
-  bytesCount += 3 + object.sourceName.length * 3;
-  bytesCount += 3 + object.sourceUrl.length * 3;
-  bytesCount += 3 + object.spoonacularSourceUrl.length * 3;
-  bytesCount += 3 + object.summary.length * 3;
+  {
+    final value = object.sourceName;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.sourceUrl;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.spoonacularSourceUrl;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.summary;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
   bytesCount += 3 + object.title.length * 3;
   return bytesCount;
 }
@@ -317,32 +362,32 @@ IsarRecipe _isarRecipeDeserialize(
         IsarExtendedIngredient(),
       ) ??
       [];
-  object.gaps = reader.readString(offsets[6]);
+  object.gaps = reader.readStringOrNull(offsets[6]);
   object.glutenFree = reader.readBool(offsets[7]);
-  object.healthScore = reader.readDouble(offsets[8]);
+  object.healthScore = reader.readDoubleOrNull(offsets[8]);
   object.id = id;
-  object.image = reader.readString(offsets[9]);
-  object.imageType = reader.readString(offsets[10]);
-  object.instructions = reader.readString(offsets[11]);
+  object.image = reader.readStringOrNull(offsets[9]);
+  object.imageType = reader.readStringOrNull(offsets[10]);
+  object.instructions = reader.readStringOrNull(offsets[11]);
   object.ketogenic = reader.readBool(offsets[12]);
-  object.license = reader.readString(offsets[13]);
+  object.license = reader.readStringOrNull(offsets[13]);
   object.lowFodmap = reader.readBool(offsets[14]);
   object.occasions = reader.readStringList(offsets[15]) ?? [];
-  object.pricePerServing = reader.readDouble(offsets[16]);
-  object.readyInMinutes = reader.readLong(offsets[17]);
-  object.servings = reader.readLong(offsets[18]);
-  object.sourceName = reader.readString(offsets[19]);
-  object.sourceUrl = reader.readString(offsets[20]);
-  object.spoonacularScore = reader.readDouble(offsets[21]);
-  object.spoonacularSourceUrl = reader.readString(offsets[22]);
-  object.summary = reader.readString(offsets[23]);
+  object.pricePerServing = reader.readDoubleOrNull(offsets[16]);
+  object.readyInMinutes = reader.readLongOrNull(offsets[17]);
+  object.servings = reader.readLongOrNull(offsets[18]);
+  object.sourceName = reader.readStringOrNull(offsets[19]);
+  object.sourceUrl = reader.readStringOrNull(offsets[20]);
+  object.spoonacularScore = reader.readDoubleOrNull(offsets[21]);
+  object.spoonacularSourceUrl = reader.readStringOrNull(offsets[22]);
+  object.summary = reader.readStringOrNull(offsets[23]);
   object.sustainable = reader.readBool(offsets[24]);
   object.title = reader.readString(offsets[25]);
   object.vegan = reader.readBool(offsets[26]);
   object.vegetarian = reader.readBool(offsets[27]);
   object.veryHealthy = reader.readBool(offsets[28]);
   object.veryPopular = reader.readBool(offsets[29]);
-  object.weightWatcherSmartPoints = reader.readLong(offsets[30]);
+  object.weightWatcherSmartPoints = reader.readLongOrNull(offsets[30]);
   object.whole30 = reader.readBool(offsets[31]);
   return object;
 }
@@ -373,41 +418,41 @@ P _isarRecipeDeserializeProp<P>(
           ) ??
           []) as P;
     case 6:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 7:
       return (reader.readBool(offset)) as P;
     case 8:
-      return (reader.readDouble(offset)) as P;
+      return (reader.readDoubleOrNull(offset)) as P;
     case 9:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 10:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 11:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 12:
       return (reader.readBool(offset)) as P;
     case 13:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 14:
       return (reader.readBool(offset)) as P;
     case 15:
       return (reader.readStringList(offset) ?? []) as P;
     case 16:
-      return (reader.readDouble(offset)) as P;
+      return (reader.readDoubleOrNull(offset)) as P;
     case 17:
-      return (reader.readLong(offset)) as P;
+      return (reader.readLongOrNull(offset)) as P;
     case 18:
-      return (reader.readLong(offset)) as P;
+      return (reader.readLongOrNull(offset)) as P;
     case 19:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 20:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 21:
-      return (reader.readDouble(offset)) as P;
+      return (reader.readDoubleOrNull(offset)) as P;
     case 22:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 23:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 24:
       return (reader.readBool(offset)) as P;
     case 25:
@@ -421,7 +466,7 @@ P _isarRecipeDeserializeProp<P>(
     case 29:
       return (reader.readBool(offset)) as P;
     case 30:
-      return (reader.readLong(offset)) as P;
+      return (reader.readLongOrNull(offset)) as P;
     case 31:
       return (reader.readBool(offset)) as P;
     default:
@@ -1303,8 +1348,24 @@ extension IsarRecipeQueryFilter
     });
   }
 
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> gapsIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'gaps',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> gapsIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'gaps',
+      ));
+    });
+  }
+
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> gapsEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -1317,7 +1378,7 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> gapsGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -1332,7 +1393,7 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> gapsLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -1347,8 +1408,8 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> gapsBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -1444,8 +1505,26 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      healthScoreIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'healthScore',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      healthScoreIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'healthScore',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       healthScoreEqualTo(
-    double value, {
+    double? value, {
     double epsilon = Query.epsilon,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -1459,7 +1538,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       healthScoreGreaterThan(
-    double value, {
+    double? value, {
     bool include = false,
     double epsilon = Query.epsilon,
   }) {
@@ -1475,7 +1554,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       healthScoreLessThan(
-    double value, {
+    double? value, {
     bool include = false,
     double epsilon = Query.epsilon,
   }) {
@@ -1491,8 +1570,8 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       healthScoreBetween(
-    double lower,
-    double upper, {
+    double? lower,
+    double? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     double epsilon = Query.epsilon,
@@ -1578,8 +1657,24 @@ extension IsarRecipeQueryFilter
     });
   }
 
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> imageIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'image',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> imageIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'image',
+      ));
+    });
+  }
+
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> imageEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -1592,7 +1687,7 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> imageGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -1607,7 +1702,7 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> imageLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -1622,8 +1717,8 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> imageBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -1709,8 +1804,26 @@ extension IsarRecipeQueryFilter
     });
   }
 
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      imageTypeIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'imageType',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      imageTypeIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'imageType',
+      ));
+    });
+  }
+
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> imageTypeEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -1724,7 +1837,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       imageTypeGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -1739,7 +1852,7 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> imageTypeLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -1754,8 +1867,8 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> imageTypeBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -1844,8 +1957,26 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      instructionsIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'instructions',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      instructionsIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'instructions',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       instructionsEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -1859,7 +1990,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       instructionsGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -1875,7 +2006,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       instructionsLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -1891,8 +2022,8 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       instructionsBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -1989,8 +2120,25 @@ extension IsarRecipeQueryFilter
     });
   }
 
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> licenseIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'license',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      licenseIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'license',
+      ));
+    });
+  }
+
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> licenseEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -2004,7 +2152,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       licenseGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -2019,7 +2167,7 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> licenseLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -2034,8 +2182,8 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> licenseBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -2357,8 +2505,26 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      pricePerServingIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'pricePerServing',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      pricePerServingIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'pricePerServing',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       pricePerServingEqualTo(
-    double value, {
+    double? value, {
     double epsilon = Query.epsilon,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -2372,7 +2538,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       pricePerServingGreaterThan(
-    double value, {
+    double? value, {
     bool include = false,
     double epsilon = Query.epsilon,
   }) {
@@ -2388,7 +2554,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       pricePerServingLessThan(
-    double value, {
+    double? value, {
     bool include = false,
     double epsilon = Query.epsilon,
   }) {
@@ -2404,8 +2570,8 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       pricePerServingBetween(
-    double lower,
-    double upper, {
+    double? lower,
+    double? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     double epsilon = Query.epsilon,
@@ -2423,7 +2589,25 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
-      readyInMinutesEqualTo(int value) {
+      readyInMinutesIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'readyInMinutes',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      readyInMinutesIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'readyInMinutes',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      readyInMinutesEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'readyInMinutes',
@@ -2434,7 +2618,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       readyInMinutesGreaterThan(
-    int value, {
+    int? value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -2448,7 +2632,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       readyInMinutesLessThan(
-    int value, {
+    int? value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -2462,8 +2646,8 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       readyInMinutesBetween(
-    int lower,
-    int upper, {
+    int? lower,
+    int? upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
@@ -2478,8 +2662,25 @@ extension IsarRecipeQueryFilter
     });
   }
 
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> servingsIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'servings',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      servingsIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'servings',
+      ));
+    });
+  }
+
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> servingsEqualTo(
-      int value) {
+      int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'servings',
@@ -2490,7 +2691,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       servingsGreaterThan(
-    int value, {
+    int? value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -2503,7 +2704,7 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> servingsLessThan(
-    int value, {
+    int? value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -2516,8 +2717,8 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> servingsBetween(
-    int lower,
-    int upper, {
+    int? lower,
+    int? upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
@@ -2532,8 +2733,26 @@ extension IsarRecipeQueryFilter
     });
   }
 
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      sourceNameIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'sourceName',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      sourceNameIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'sourceName',
+      ));
+    });
+  }
+
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> sourceNameEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -2547,7 +2766,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       sourceNameGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -2563,7 +2782,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       sourceNameLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -2578,8 +2797,8 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> sourceNameBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -2667,8 +2886,26 @@ extension IsarRecipeQueryFilter
     });
   }
 
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      sourceUrlIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'sourceUrl',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      sourceUrlIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'sourceUrl',
+      ));
+    });
+  }
+
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> sourceUrlEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -2682,7 +2919,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       sourceUrlGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -2697,7 +2934,7 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> sourceUrlLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -2712,8 +2949,8 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> sourceUrlBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -2802,8 +3039,26 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      spoonacularScoreIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'spoonacularScore',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      spoonacularScoreIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'spoonacularScore',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       spoonacularScoreEqualTo(
-    double value, {
+    double? value, {
     double epsilon = Query.epsilon,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -2817,7 +3072,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       spoonacularScoreGreaterThan(
-    double value, {
+    double? value, {
     bool include = false,
     double epsilon = Query.epsilon,
   }) {
@@ -2833,7 +3088,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       spoonacularScoreLessThan(
-    double value, {
+    double? value, {
     bool include = false,
     double epsilon = Query.epsilon,
   }) {
@@ -2849,8 +3104,8 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       spoonacularScoreBetween(
-    double lower,
-    double upper, {
+    double? lower,
+    double? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     double epsilon = Query.epsilon,
@@ -2868,8 +3123,26 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      spoonacularSourceUrlIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'spoonacularSourceUrl',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      spoonacularSourceUrlIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'spoonacularSourceUrl',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       spoonacularSourceUrlEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -2883,7 +3156,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       spoonacularSourceUrlGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -2899,7 +3172,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       spoonacularSourceUrlLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -2915,8 +3188,8 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       spoonacularSourceUrlBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -3003,8 +3276,25 @@ extension IsarRecipeQueryFilter
     });
   }
 
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> summaryIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'summary',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      summaryIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'summary',
+      ));
+    });
+  }
+
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> summaryEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -3018,7 +3308,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       summaryGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -3033,7 +3323,7 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> summaryLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -3048,8 +3338,8 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition> summaryBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -3317,7 +3607,25 @@ extension IsarRecipeQueryFilter
   }
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
-      weightWatcherSmartPointsEqualTo(int value) {
+      weightWatcherSmartPointsIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'weightWatcherSmartPoints',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      weightWatcherSmartPointsIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'weightWatcherSmartPoints',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
+      weightWatcherSmartPointsEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'weightWatcherSmartPoints',
@@ -3328,7 +3636,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       weightWatcherSmartPointsGreaterThan(
-    int value, {
+    int? value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -3342,7 +3650,7 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       weightWatcherSmartPointsLessThan(
-    int value, {
+    int? value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -3356,8 +3664,8 @@ extension IsarRecipeQueryFilter
 
   QueryBuilder<IsarRecipe, IsarRecipe, QAfterFilterCondition>
       weightWatcherSmartPointsBetween(
-    int lower,
-    int upper, {
+    int? lower,
+    int? upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
@@ -4322,7 +4630,7 @@ extension IsarRecipeQueryProperty
     });
   }
 
-  QueryBuilder<IsarRecipe, String, QQueryOperations> gapsProperty() {
+  QueryBuilder<IsarRecipe, String?, QQueryOperations> gapsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'gaps');
     });
@@ -4334,25 +4642,25 @@ extension IsarRecipeQueryProperty
     });
   }
 
-  QueryBuilder<IsarRecipe, double, QQueryOperations> healthScoreProperty() {
+  QueryBuilder<IsarRecipe, double?, QQueryOperations> healthScoreProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'healthScore');
     });
   }
 
-  QueryBuilder<IsarRecipe, String, QQueryOperations> imageProperty() {
+  QueryBuilder<IsarRecipe, String?, QQueryOperations> imageProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'image');
     });
   }
 
-  QueryBuilder<IsarRecipe, String, QQueryOperations> imageTypeProperty() {
+  QueryBuilder<IsarRecipe, String?, QQueryOperations> imageTypeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'imageType');
     });
   }
 
-  QueryBuilder<IsarRecipe, String, QQueryOperations> instructionsProperty() {
+  QueryBuilder<IsarRecipe, String?, QQueryOperations> instructionsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'instructions');
     });
@@ -4364,7 +4672,7 @@ extension IsarRecipeQueryProperty
     });
   }
 
-  QueryBuilder<IsarRecipe, String, QQueryOperations> licenseProperty() {
+  QueryBuilder<IsarRecipe, String?, QQueryOperations> licenseProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'license');
     });
@@ -4382,51 +4690,52 @@ extension IsarRecipeQueryProperty
     });
   }
 
-  QueryBuilder<IsarRecipe, double, QQueryOperations> pricePerServingProperty() {
+  QueryBuilder<IsarRecipe, double?, QQueryOperations>
+      pricePerServingProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'pricePerServing');
     });
   }
 
-  QueryBuilder<IsarRecipe, int, QQueryOperations> readyInMinutesProperty() {
+  QueryBuilder<IsarRecipe, int?, QQueryOperations> readyInMinutesProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'readyInMinutes');
     });
   }
 
-  QueryBuilder<IsarRecipe, int, QQueryOperations> servingsProperty() {
+  QueryBuilder<IsarRecipe, int?, QQueryOperations> servingsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'servings');
     });
   }
 
-  QueryBuilder<IsarRecipe, String, QQueryOperations> sourceNameProperty() {
+  QueryBuilder<IsarRecipe, String?, QQueryOperations> sourceNameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'sourceName');
     });
   }
 
-  QueryBuilder<IsarRecipe, String, QQueryOperations> sourceUrlProperty() {
+  QueryBuilder<IsarRecipe, String?, QQueryOperations> sourceUrlProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'sourceUrl');
     });
   }
 
-  QueryBuilder<IsarRecipe, double, QQueryOperations>
+  QueryBuilder<IsarRecipe, double?, QQueryOperations>
       spoonacularScoreProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'spoonacularScore');
     });
   }
 
-  QueryBuilder<IsarRecipe, String, QQueryOperations>
+  QueryBuilder<IsarRecipe, String?, QQueryOperations>
       spoonacularSourceUrlProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'spoonacularSourceUrl');
     });
   }
 
-  QueryBuilder<IsarRecipe, String, QQueryOperations> summaryProperty() {
+  QueryBuilder<IsarRecipe, String?, QQueryOperations> summaryProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'summary');
     });
@@ -4468,7 +4777,7 @@ extension IsarRecipeQueryProperty
     });
   }
 
-  QueryBuilder<IsarRecipe, int, QQueryOperations>
+  QueryBuilder<IsarRecipe, int?, QQueryOperations>
       weightWatcherSmartPointsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'weightWatcherSmartPoints');
@@ -4567,9 +4876,24 @@ int _isarExtendedIngredientEstimateSize(
   Map<Type, List<int>> allOffsets,
 ) {
   var bytesCount = offsets.last;
-  bytesCount += 3 + object.aisle.length * 3;
-  bytesCount += 3 + object.consistency.length * 3;
-  bytesCount += 3 + object.image.length * 3;
+  {
+    final value = object.aisle;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.consistency;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.image;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
   bytesCount += 3 +
       IsarMeasuresSchema.estimateSize(
           object.measures, allOffsets[IsarMeasures]!, allOffsets);
@@ -4581,10 +4905,30 @@ int _isarExtendedIngredientEstimateSize(
     }
   }
   bytesCount += 3 + object.name.length * 3;
-  bytesCount += 3 + object.nameClean.length * 3;
-  bytesCount += 3 + object.original.length * 3;
-  bytesCount += 3 + object.originalName.length * 3;
-  bytesCount += 3 + object.unit.length * 3;
+  {
+    final value = object.nameClean;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.original;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.originalName;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.unit;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
   return bytesCount;
 }
 
@@ -4620,11 +4964,11 @@ IsarExtendedIngredient _isarExtendedIngredientDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = IsarExtendedIngredient();
-  object.aisle = reader.readString(offsets[0]);
-  object.amount = reader.readDouble(offsets[1]);
-  object.consistency = reader.readString(offsets[2]);
-  object.id = reader.readLong(offsets[3]);
-  object.image = reader.readString(offsets[4]);
+  object.aisle = reader.readStringOrNull(offsets[0]);
+  object.amount = reader.readDoubleOrNull(offsets[1]);
+  object.consistency = reader.readStringOrNull(offsets[2]);
+  object.id = reader.readLongOrNull(offsets[3]);
+  object.image = reader.readStringOrNull(offsets[4]);
   object.measures = reader.readObjectOrNull<IsarMeasures>(
         offsets[5],
         IsarMeasuresSchema.deserialize,
@@ -4633,10 +4977,10 @@ IsarExtendedIngredient _isarExtendedIngredientDeserialize(
       IsarMeasures();
   object.meta = reader.readStringList(offsets[6]) ?? [];
   object.name = reader.readString(offsets[7]);
-  object.nameClean = reader.readString(offsets[8]);
-  object.original = reader.readString(offsets[9]);
-  object.originalName = reader.readString(offsets[10]);
-  object.unit = reader.readString(offsets[11]);
+  object.nameClean = reader.readStringOrNull(offsets[8]);
+  object.original = reader.readStringOrNull(offsets[9]);
+  object.originalName = reader.readStringOrNull(offsets[10]);
+  object.unit = reader.readStringOrNull(offsets[11]);
   return object;
 }
 
@@ -4648,15 +4992,15 @@ P _isarExtendedIngredientDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 1:
-      return (reader.readDouble(offset)) as P;
+      return (reader.readDoubleOrNull(offset)) as P;
     case 2:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 3:
-      return (reader.readLong(offset)) as P;
+      return (reader.readLongOrNull(offset)) as P;
     case 4:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 5:
       return (reader.readObjectOrNull<IsarMeasures>(
             offset,
@@ -4669,13 +5013,13 @@ P _isarExtendedIngredientDeserializeProp<P>(
     case 7:
       return (reader.readString(offset)) as P;
     case 8:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 9:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 10:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 11:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
@@ -4684,8 +5028,26 @@ P _isarExtendedIngredientDeserializeProp<P>(
 extension IsarExtendedIngredientQueryFilter on QueryBuilder<
     IsarExtendedIngredient, IsarExtendedIngredient, QFilterCondition> {
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> aisleIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'aisle',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> aisleIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'aisle',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> aisleEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -4699,7 +5061,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> aisleGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -4715,7 +5077,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> aisleLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -4731,8 +5093,8 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> aisleBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -4822,8 +5184,26 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
   }
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> amountIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'amount',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> amountIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'amount',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> amountEqualTo(
-    double value, {
+    double? value, {
     double epsilon = Query.epsilon,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -4837,7 +5217,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> amountGreaterThan(
-    double value, {
+    double? value, {
     bool include = false,
     double epsilon = Query.epsilon,
   }) {
@@ -4853,7 +5233,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> amountLessThan(
-    double value, {
+    double? value, {
     bool include = false,
     double epsilon = Query.epsilon,
   }) {
@@ -4869,8 +5249,8 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> amountBetween(
-    double lower,
-    double upper, {
+    double? lower,
+    double? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     double epsilon = Query.epsilon,
@@ -4888,8 +5268,26 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
   }
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> consistencyIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'consistency',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> consistencyIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'consistency',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> consistencyEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -4903,7 +5301,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> consistencyGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -4919,7 +5317,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> consistencyLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -4935,8 +5333,8 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> consistencyBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -5026,7 +5424,25 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
   }
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
-      QAfterFilterCondition> idEqualTo(int value) {
+      QAfterFilterCondition> idIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'id',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> idIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'id',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> idEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -5037,7 +5453,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> idGreaterThan(
-    int value, {
+    int? value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -5051,7 +5467,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> idLessThan(
-    int value, {
+    int? value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -5065,8 +5481,8 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> idBetween(
-    int lower,
-    int upper, {
+    int? lower,
+    int? upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
@@ -5082,8 +5498,26 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
   }
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> imageIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'image',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> imageIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'image',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> imageEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -5097,7 +5531,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> imageGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -5113,7 +5547,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> imageLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -5129,8 +5563,8 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> imageBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -5585,8 +6019,26 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
   }
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> nameCleanIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'nameClean',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> nameCleanIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'nameClean',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> nameCleanEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -5600,7 +6052,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> nameCleanGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -5616,7 +6068,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> nameCleanLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -5632,8 +6084,8 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> nameCleanBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -5723,8 +6175,26 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
   }
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> originalIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'original',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> originalIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'original',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> originalEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -5738,7 +6208,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> originalGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -5754,7 +6224,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> originalLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -5770,8 +6240,8 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> originalBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -5861,8 +6331,26 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
   }
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> originalNameIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'originalName',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> originalNameIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'originalName',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> originalNameEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -5876,7 +6364,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> originalNameGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -5892,7 +6380,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> originalNameLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -5908,8 +6396,8 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> originalNameBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -5999,8 +6487,26 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
   }
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> unitIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'unit',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
+      QAfterFilterCondition> unitIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'unit',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> unitEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -6014,7 +6520,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> unitGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -6030,7 +6536,7 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> unitLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -6046,8 +6552,8 @@ extension IsarExtendedIngredientQueryFilter on QueryBuilder<
 
   QueryBuilder<IsarExtendedIngredient, IsarExtendedIngredient,
       QAfterFilterCondition> unitBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -6311,8 +6817,18 @@ int _isarMeasureEstimateSize(
   Map<Type, List<int>> allOffsets,
 ) {
   var bytesCount = offsets.last;
-  bytesCount += 3 + object.unitLong.length * 3;
-  bytesCount += 3 + object.unitShort.length * 3;
+  {
+    final value = object.unitLong;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.unitShort;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
   return bytesCount;
 }
 
@@ -6334,9 +6850,9 @@ IsarMeasure _isarMeasureDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = IsarMeasure();
-  object.amount = reader.readDouble(offsets[0]);
-  object.unitLong = reader.readString(offsets[1]);
-  object.unitShort = reader.readString(offsets[2]);
+  object.amount = reader.readDoubleOrNull(offsets[0]);
+  object.unitLong = reader.readStringOrNull(offsets[1]);
+  object.unitShort = reader.readStringOrNull(offsets[2]);
   return object;
 }
 
@@ -6348,11 +6864,11 @@ P _isarMeasureDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readDouble(offset)) as P;
+      return (reader.readDoubleOrNull(offset)) as P;
     case 1:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 2:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
@@ -6360,8 +6876,25 @@ P _isarMeasureDeserializeProp<P>(
 
 extension IsarMeasureQueryFilter
     on QueryBuilder<IsarMeasure, IsarMeasure, QFilterCondition> {
+  QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition> amountIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'amount',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition>
+      amountIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'amount',
+      ));
+    });
+  }
+
   QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition> amountEqualTo(
-    double value, {
+    double? value, {
     double epsilon = Query.epsilon,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -6375,7 +6908,7 @@ extension IsarMeasureQueryFilter
 
   QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition>
       amountGreaterThan(
-    double value, {
+    double? value, {
     bool include = false,
     double epsilon = Query.epsilon,
   }) {
@@ -6390,7 +6923,7 @@ extension IsarMeasureQueryFilter
   }
 
   QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition> amountLessThan(
-    double value, {
+    double? value, {
     bool include = false,
     double epsilon = Query.epsilon,
   }) {
@@ -6405,8 +6938,8 @@ extension IsarMeasureQueryFilter
   }
 
   QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition> amountBetween(
-    double lower,
-    double upper, {
+    double? lower,
+    double? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     double epsilon = Query.epsilon,
@@ -6423,8 +6956,26 @@ extension IsarMeasureQueryFilter
     });
   }
 
+  QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition>
+      unitLongIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'unitLong',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition>
+      unitLongIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'unitLong',
+      ));
+    });
+  }
+
   QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition> unitLongEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -6438,7 +6989,7 @@ extension IsarMeasureQueryFilter
 
   QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition>
       unitLongGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -6454,7 +7005,7 @@ extension IsarMeasureQueryFilter
 
   QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition>
       unitLongLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -6469,8 +7020,8 @@ extension IsarMeasureQueryFilter
   }
 
   QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition> unitLongBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -6559,8 +7110,26 @@ extension IsarMeasureQueryFilter
   }
 
   QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition>
+      unitShortIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'unitShort',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition>
+      unitShortIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'unitShort',
+      ));
+    });
+  }
+
+  QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition>
       unitShortEqualTo(
-    String value, {
+    String? value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -6574,7 +7143,7 @@ extension IsarMeasureQueryFilter
 
   QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition>
       unitShortGreaterThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -6590,7 +7159,7 @@ extension IsarMeasureQueryFilter
 
   QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition>
       unitShortLessThan(
-    String value, {
+    String? value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -6606,8 +7175,8 @@ extension IsarMeasureQueryFilter
 
   QueryBuilder<IsarMeasure, IsarMeasure, QAfterFilterCondition>
       unitShortBetween(
-    String lower,
-    String upper, {
+    String? lower,
+    String? upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,

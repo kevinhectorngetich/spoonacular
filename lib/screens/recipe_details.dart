@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spoonacular/data/models/recipe.dart';
 import 'package:spoonacular/screens/cart.dart';
 import 'package:spoonacular/constants/colors.dart';
 import 'package:spoonacular/constants/sized_box.dart';
@@ -6,7 +7,8 @@ import 'package:spoonacular/constants/text_styles.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 class RecipeDetails extends StatefulWidget {
-  const RecipeDetails({super.key});
+  final Recipe recipe;
+  const RecipeDetails({super.key, required this.recipe});
 
   @override
   State<RecipeDetails> createState() => _RecipeDetailsState();
@@ -36,18 +38,27 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                   children: [
                     Container(
                       height: 200,
-                      child: const Placeholder(),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            widget.recipe.image ??
+                                "https://assets.materialup.com/uploads/b03b23aa-aa69-4657-aa5e-fa5fef2c76e8/preview.png",
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                     gapH20,
-                    const Text(
-                      "What do you want to remember about this Pin",
+                    Text(
+                      widget.recipe.title,
                       style: kTitleStyle,
                     ),
-                    const Align(
+                    Align(
                       alignment: Alignment.bottomLeft,
                       child: Text(
-                        "Aurthor name",
-                        style: TextStyle(
+                        widget.recipe.sourceName ?? "Aurthor name",
+                        style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                           color: Colors.grey,
@@ -88,8 +99,8 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                             ],
                           ),
                         ),
-                        const Text(
-                          'Ksh ' '500',
+                        Text(
+                          'Ksh ${widget.recipe.pricePerServing}',
                           style: kTitleStyle,
                         ),
                       ],
@@ -103,7 +114,8 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                     ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: ingredients.length,
+                      itemCount: widget.recipe.extendedIngredients
+                          .length, // Use the length of extendedIngredients
                       itemBuilder: (context, index) {
                         return Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,7 +131,8 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                             const SizedBox(width: 10),
                             // Display the ingredient text
                             Text(
-                              ingredients[index],
+                              widget.recipe.extendedIngredients[index]
+                                  .name, // Use the name of the extended ingredient
                               style: const TextStyle(fontSize: 16),
                             ),
                           ],
@@ -131,12 +144,12 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                       "Summary",
                       style: ksubTitleStyle,
                     ),
-                    const HtmlWidget(
-                      '''Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs might be a good recipe to expand your main course repertoire. One portion of this dish contains approximately <b>19g of protein </b>,  <b>20g of fat </b>, and a total of  <b>584 calories </b>. For  <b>"\$ 1.63 per serving </b>, this recipe  <b>covers 23% </b> of your daily requirements of vitamins and minerals. This recipe serves 2. It is brought to you by fullbellysisters.blogspot.com. 209 people were glad they tried this recipe. A mixture of scallions, salt and pepper, white wine, and a handful of other ingredients are all it takes to make this recipe so scrumptious. From preparation to the plate, this recipe takes approximately  <b>45 minutes </b>. All things considered, we decided this recipe  <b>deserves a spoonacular score of 83% </b>. This score is awesome. If you like this recipe, take a look at these similar recipes: <a href="https://spoonacular.com/recipes/cauliflower-gratin-with-garlic-breadcrumbs-318375">Cauliflower Gratin with Garlic Breadcrumbs</a>, < href=\"https://spoonacular.com/recipes/pasta-with-cauliflower-sausage-breadcrumbs-30437\">Pasta With Cauliflower, Sausage, & Breadcrumbs</a>, and <a href=\"https://spoonacular.com/recipes/pasta-with-roasted-cauliflower-parsley-and-breadcrumbs-30738\">Pasta With Roasted Cauliflower, Parsley, And Breadcrumbs</a>.''',
+                    HtmlWidget(
+                      widget.recipe.summary ?? "Empty",
                       // onTapUrl: (url) => print('tapped $url'),
                       renderMode: RenderMode.column,
                       // set the default styling for text
-                      textStyle: TextStyle(fontSize: 14),
+                      textStyle: const TextStyle(fontSize: 14),
                     ),
                     gapH32,
                     gapH32,
@@ -174,14 +187,3 @@ class _RecipeDetailsState extends State<RecipeDetails> {
     );
   }
 }
-
-List<String> ingredients = [
-  "2 cups all-purpose flour",
-  "1 teaspoon baking powder",
-  "1/2 teaspoon salt",
-  "1/2 cup unsalted butter, softened",
-  "1 cup granulated sugar",
-  "2 large eggs",
-  "1 teaspoon vanilla extract",
-  "1 cup milk",
-];

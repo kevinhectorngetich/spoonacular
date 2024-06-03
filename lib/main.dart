@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:spoonacular/constants/colors.dart';
 import 'package:spoonacular/screens/home_screen.dart';
 import 'package:spoonacular/services/isar_service.dart';
+import 'package:spoonacular/state/recipe_store.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   final isarService = IsarService();
   await isarService.init();
-  runApp(const MyApp());
+
+  final recipeStore = RecipeStore(isarService: isarService);
+
+  runApp(
+    MultiProvider(
+      providers: [
+        Provider<RecipeStore>(create: (_) => recipeStore),
+        Provider<IsarService>(create: (_) => isarService),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

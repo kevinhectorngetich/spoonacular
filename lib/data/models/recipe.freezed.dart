@@ -22,17 +22,17 @@ Recipe _$RecipeFromJson(Map<String, dynamic> json) {
 mixin _$Recipe {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
-  String get imageType => throw _privateConstructorUsedError;
-  int get servings => throw _privateConstructorUsedError;
-  int get readyInMinutes => throw _privateConstructorUsedError;
-  String get license => throw _privateConstructorUsedError;
-  String get sourceName => throw _privateConstructorUsedError;
-  String get sourceUrl => throw _privateConstructorUsedError;
-  String get spoonacularSourceUrl => throw _privateConstructorUsedError;
-  double get healthScore => throw _privateConstructorUsedError;
-  double get spoonacularScore => throw _privateConstructorUsedError;
-  double get pricePerServing => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  String? get imageType => throw _privateConstructorUsedError;
+  int? get servings => throw _privateConstructorUsedError;
+  int? get readyInMinutes => throw _privateConstructorUsedError;
+  String? get license => throw _privateConstructorUsedError;
+  String? get sourceName => throw _privateConstructorUsedError;
+  String? get sourceUrl => throw _privateConstructorUsedError;
+  String? get spoonacularSourceUrl => throw _privateConstructorUsedError;
+  double? get healthScore => throw _privateConstructorUsedError;
+  double? get spoonacularScore => throw _privateConstructorUsedError;
+  double? get pricePerServing => throw _privateConstructorUsedError;
   bool get cheap => throw _privateConstructorUsedError;
   bool get dairyFree => throw _privateConstructorUsedError;
   bool get glutenFree => throw _privateConstructorUsedError;
@@ -44,16 +44,16 @@ mixin _$Recipe {
   bool get veryHealthy => throw _privateConstructorUsedError;
   bool get veryPopular => throw _privateConstructorUsedError;
   bool get whole30 => throw _privateConstructorUsedError;
-  int get weightWatcherSmartPoints => throw _privateConstructorUsedError;
-  String get gaps => throw _privateConstructorUsedError;
-  String get instructions => throw _privateConstructorUsedError;
+  int? get weightWatcherSmartPoints => throw _privateConstructorUsedError;
+  String? get gaps => throw _privateConstructorUsedError;
+  String? get instructions => throw _privateConstructorUsedError;
   List<String> get cuisines => throw _privateConstructorUsedError;
   List<String> get dishTypes => throw _privateConstructorUsedError;
   List<String> get diets => throw _privateConstructorUsedError;
   List<String> get occasions => throw _privateConstructorUsedError;
   List<ExtendedIngredient> get extendedIngredients =>
       throw _privateConstructorUsedError;
-  String get summary => throw _privateConstructorUsedError;
+  String? get summary => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -68,17 +68,17 @@ abstract class $RecipeCopyWith<$Res> {
   $Res call(
       {int id,
       String title,
-      String image,
-      String imageType,
-      int servings,
-      int readyInMinutes,
-      String license,
-      String sourceName,
-      String sourceUrl,
-      String spoonacularSourceUrl,
-      double healthScore,
-      double spoonacularScore,
-      double pricePerServing,
+      String? image,
+      String? imageType,
+      int? servings,
+      int? readyInMinutes,
+      String? license,
+      String? sourceName,
+      String? sourceUrl,
+      String? spoonacularSourceUrl,
+      double? healthScore,
+      double? spoonacularScore,
+      double? pricePerServing,
       bool cheap,
       bool dairyFree,
       bool glutenFree,
@@ -90,15 +90,15 @@ abstract class $RecipeCopyWith<$Res> {
       bool veryHealthy,
       bool veryPopular,
       bool whole30,
-      int weightWatcherSmartPoints,
-      String gaps,
-      String instructions,
+      int? weightWatcherSmartPoints,
+      String? gaps,
+      String? instructions,
       List<String> cuisines,
       List<String> dishTypes,
       List<String> diets,
       List<String> occasions,
       List<ExtendedIngredient> extendedIngredients,
-      String summary});
+      String? summary});
 }
 
 /// @nodoc
@@ -116,17 +116,17 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? image = null,
-    Object? imageType = null,
-    Object? servings = null,
-    Object? readyInMinutes = null,
-    Object? license = null,
-    Object? sourceName = null,
-    Object? sourceUrl = null,
-    Object? spoonacularSourceUrl = null,
-    Object? healthScore = null,
-    Object? spoonacularScore = null,
-    Object? pricePerServing = null,
+    Object? image = freezed,
+    Object? imageType = freezed,
+    Object? servings = freezed,
+    Object? readyInMinutes = freezed,
+    Object? license = freezed,
+    Object? sourceName = freezed,
+    Object? sourceUrl = freezed,
+    Object? spoonacularSourceUrl = freezed,
+    Object? healthScore = freezed,
+    Object? spoonacularScore = freezed,
+    Object? pricePerServing = freezed,
     Object? cheap = null,
     Object? dairyFree = null,
     Object? glutenFree = null,
@@ -138,15 +138,15 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
     Object? veryHealthy = null,
     Object? veryPopular = null,
     Object? whole30 = null,
-    Object? weightWatcherSmartPoints = null,
-    Object? gaps = null,
-    Object? instructions = null,
+    Object? weightWatcherSmartPoints = freezed,
+    Object? gaps = freezed,
+    Object? instructions = freezed,
     Object? cuisines = null,
     Object? dishTypes = null,
     Object? diets = null,
     Object? occasions = null,
     Object? extendedIngredients = null,
-    Object? summary = null,
+    Object? summary = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -157,50 +157,50 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageType: null == imageType
+              as String?,
+      imageType: freezed == imageType
           ? _value.imageType
           : imageType // ignore: cast_nullable_to_non_nullable
-              as String,
-      servings: null == servings
+              as String?,
+      servings: freezed == servings
           ? _value.servings
           : servings // ignore: cast_nullable_to_non_nullable
-              as int,
-      readyInMinutes: null == readyInMinutes
+              as int?,
+      readyInMinutes: freezed == readyInMinutes
           ? _value.readyInMinutes
           : readyInMinutes // ignore: cast_nullable_to_non_nullable
-              as int,
-      license: null == license
+              as int?,
+      license: freezed == license
           ? _value.license
           : license // ignore: cast_nullable_to_non_nullable
-              as String,
-      sourceName: null == sourceName
+              as String?,
+      sourceName: freezed == sourceName
           ? _value.sourceName
           : sourceName // ignore: cast_nullable_to_non_nullable
-              as String,
-      sourceUrl: null == sourceUrl
+              as String?,
+      sourceUrl: freezed == sourceUrl
           ? _value.sourceUrl
           : sourceUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      spoonacularSourceUrl: null == spoonacularSourceUrl
+              as String?,
+      spoonacularSourceUrl: freezed == spoonacularSourceUrl
           ? _value.spoonacularSourceUrl
           : spoonacularSourceUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      healthScore: null == healthScore
+              as String?,
+      healthScore: freezed == healthScore
           ? _value.healthScore
           : healthScore // ignore: cast_nullable_to_non_nullable
-              as double,
-      spoonacularScore: null == spoonacularScore
+              as double?,
+      spoonacularScore: freezed == spoonacularScore
           ? _value.spoonacularScore
           : spoonacularScore // ignore: cast_nullable_to_non_nullable
-              as double,
-      pricePerServing: null == pricePerServing
+              as double?,
+      pricePerServing: freezed == pricePerServing
           ? _value.pricePerServing
           : pricePerServing // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       cheap: null == cheap
           ? _value.cheap
           : cheap // ignore: cast_nullable_to_non_nullable
@@ -245,18 +245,18 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
           ? _value.whole30
           : whole30 // ignore: cast_nullable_to_non_nullable
               as bool,
-      weightWatcherSmartPoints: null == weightWatcherSmartPoints
+      weightWatcherSmartPoints: freezed == weightWatcherSmartPoints
           ? _value.weightWatcherSmartPoints
           : weightWatcherSmartPoints // ignore: cast_nullable_to_non_nullable
-              as int,
-      gaps: null == gaps
+              as int?,
+      gaps: freezed == gaps
           ? _value.gaps
           : gaps // ignore: cast_nullable_to_non_nullable
-              as String,
-      instructions: null == instructions
+              as String?,
+      instructions: freezed == instructions
           ? _value.instructions
           : instructions // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       cuisines: null == cuisines
           ? _value.cuisines
           : cuisines // ignore: cast_nullable_to_non_nullable
@@ -277,10 +277,10 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
           ? _value.extendedIngredients
           : extendedIngredients // ignore: cast_nullable_to_non_nullable
               as List<ExtendedIngredient>,
-      summary: null == summary
+      summary: freezed == summary
           ? _value.summary
           : summary // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -295,17 +295,17 @@ abstract class _$$RecipeImplCopyWith<$Res> implements $RecipeCopyWith<$Res> {
   $Res call(
       {int id,
       String title,
-      String image,
-      String imageType,
-      int servings,
-      int readyInMinutes,
-      String license,
-      String sourceName,
-      String sourceUrl,
-      String spoonacularSourceUrl,
-      double healthScore,
-      double spoonacularScore,
-      double pricePerServing,
+      String? image,
+      String? imageType,
+      int? servings,
+      int? readyInMinutes,
+      String? license,
+      String? sourceName,
+      String? sourceUrl,
+      String? spoonacularSourceUrl,
+      double? healthScore,
+      double? spoonacularScore,
+      double? pricePerServing,
       bool cheap,
       bool dairyFree,
       bool glutenFree,
@@ -317,15 +317,15 @@ abstract class _$$RecipeImplCopyWith<$Res> implements $RecipeCopyWith<$Res> {
       bool veryHealthy,
       bool veryPopular,
       bool whole30,
-      int weightWatcherSmartPoints,
-      String gaps,
-      String instructions,
+      int? weightWatcherSmartPoints,
+      String? gaps,
+      String? instructions,
       List<String> cuisines,
       List<String> dishTypes,
       List<String> diets,
       List<String> occasions,
       List<ExtendedIngredient> extendedIngredients,
-      String summary});
+      String? summary});
 }
 
 /// @nodoc
@@ -341,17 +341,17 @@ class __$$RecipeImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? image = null,
-    Object? imageType = null,
-    Object? servings = null,
-    Object? readyInMinutes = null,
-    Object? license = null,
-    Object? sourceName = null,
-    Object? sourceUrl = null,
-    Object? spoonacularSourceUrl = null,
-    Object? healthScore = null,
-    Object? spoonacularScore = null,
-    Object? pricePerServing = null,
+    Object? image = freezed,
+    Object? imageType = freezed,
+    Object? servings = freezed,
+    Object? readyInMinutes = freezed,
+    Object? license = freezed,
+    Object? sourceName = freezed,
+    Object? sourceUrl = freezed,
+    Object? spoonacularSourceUrl = freezed,
+    Object? healthScore = freezed,
+    Object? spoonacularScore = freezed,
+    Object? pricePerServing = freezed,
     Object? cheap = null,
     Object? dairyFree = null,
     Object? glutenFree = null,
@@ -363,15 +363,15 @@ class __$$RecipeImplCopyWithImpl<$Res>
     Object? veryHealthy = null,
     Object? veryPopular = null,
     Object? whole30 = null,
-    Object? weightWatcherSmartPoints = null,
-    Object? gaps = null,
-    Object? instructions = null,
+    Object? weightWatcherSmartPoints = freezed,
+    Object? gaps = freezed,
+    Object? instructions = freezed,
     Object? cuisines = null,
     Object? dishTypes = null,
     Object? diets = null,
     Object? occasions = null,
     Object? extendedIngredients = null,
-    Object? summary = null,
+    Object? summary = freezed,
   }) {
     return _then(_$RecipeImpl(
       id: null == id
@@ -382,50 +382,50 @@ class __$$RecipeImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageType: null == imageType
+              as String?,
+      imageType: freezed == imageType
           ? _value.imageType
           : imageType // ignore: cast_nullable_to_non_nullable
-              as String,
-      servings: null == servings
+              as String?,
+      servings: freezed == servings
           ? _value.servings
           : servings // ignore: cast_nullable_to_non_nullable
-              as int,
-      readyInMinutes: null == readyInMinutes
+              as int?,
+      readyInMinutes: freezed == readyInMinutes
           ? _value.readyInMinutes
           : readyInMinutes // ignore: cast_nullable_to_non_nullable
-              as int,
-      license: null == license
+              as int?,
+      license: freezed == license
           ? _value.license
           : license // ignore: cast_nullable_to_non_nullable
-              as String,
-      sourceName: null == sourceName
+              as String?,
+      sourceName: freezed == sourceName
           ? _value.sourceName
           : sourceName // ignore: cast_nullable_to_non_nullable
-              as String,
-      sourceUrl: null == sourceUrl
+              as String?,
+      sourceUrl: freezed == sourceUrl
           ? _value.sourceUrl
           : sourceUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      spoonacularSourceUrl: null == spoonacularSourceUrl
+              as String?,
+      spoonacularSourceUrl: freezed == spoonacularSourceUrl
           ? _value.spoonacularSourceUrl
           : spoonacularSourceUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      healthScore: null == healthScore
+              as String?,
+      healthScore: freezed == healthScore
           ? _value.healthScore
           : healthScore // ignore: cast_nullable_to_non_nullable
-              as double,
-      spoonacularScore: null == spoonacularScore
+              as double?,
+      spoonacularScore: freezed == spoonacularScore
           ? _value.spoonacularScore
           : spoonacularScore // ignore: cast_nullable_to_non_nullable
-              as double,
-      pricePerServing: null == pricePerServing
+              as double?,
+      pricePerServing: freezed == pricePerServing
           ? _value.pricePerServing
           : pricePerServing // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       cheap: null == cheap
           ? _value.cheap
           : cheap // ignore: cast_nullable_to_non_nullable
@@ -470,18 +470,18 @@ class __$$RecipeImplCopyWithImpl<$Res>
           ? _value.whole30
           : whole30 // ignore: cast_nullable_to_non_nullable
               as bool,
-      weightWatcherSmartPoints: null == weightWatcherSmartPoints
+      weightWatcherSmartPoints: freezed == weightWatcherSmartPoints
           ? _value.weightWatcherSmartPoints
           : weightWatcherSmartPoints // ignore: cast_nullable_to_non_nullable
-              as int,
-      gaps: null == gaps
+              as int?,
+      gaps: freezed == gaps
           ? _value.gaps
           : gaps // ignore: cast_nullable_to_non_nullable
-              as String,
-      instructions: null == instructions
+              as String?,
+      instructions: freezed == instructions
           ? _value.instructions
           : instructions // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       cuisines: null == cuisines
           ? _value._cuisines
           : cuisines // ignore: cast_nullable_to_non_nullable
@@ -502,10 +502,10 @@ class __$$RecipeImplCopyWithImpl<$Res>
           ? _value._extendedIngredients
           : extendedIngredients // ignore: cast_nullable_to_non_nullable
               as List<ExtendedIngredient>,
-      summary: null == summary
+      summary: freezed == summary
           ? _value.summary
           : summary // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -516,37 +516,37 @@ class _$RecipeImpl implements _Recipe {
   const _$RecipeImpl(
       {required this.id,
       required this.title,
-      required this.image,
-      required this.imageType,
-      required this.servings,
-      required this.readyInMinutes,
-      required this.license,
-      required this.sourceName,
-      required this.sourceUrl,
-      required this.spoonacularSourceUrl,
-      required this.healthScore,
-      required this.spoonacularScore,
-      required this.pricePerServing,
-      required this.cheap,
-      required this.dairyFree,
-      required this.glutenFree,
-      required this.ketogenic,
-      required this.lowFodmap,
-      required this.sustainable,
-      required this.vegan,
-      required this.vegetarian,
-      required this.veryHealthy,
-      required this.veryPopular,
-      required this.whole30,
-      required this.weightWatcherSmartPoints,
-      required this.gaps,
-      required this.instructions,
-      required final List<String> cuisines,
-      required final List<String> dishTypes,
-      required final List<String> diets,
-      required final List<String> occasions,
-      required final List<ExtendedIngredient> extendedIngredients,
-      required this.summary})
+      this.image,
+      this.imageType,
+      this.servings,
+      this.readyInMinutes,
+      this.license,
+      this.sourceName,
+      this.sourceUrl,
+      this.spoonacularSourceUrl,
+      this.healthScore,
+      this.spoonacularScore,
+      this.pricePerServing,
+      this.cheap = false,
+      this.dairyFree = false,
+      this.glutenFree = false,
+      this.ketogenic = false,
+      this.lowFodmap = false,
+      this.sustainable = false,
+      this.vegan = false,
+      this.vegetarian = false,
+      this.veryHealthy = false,
+      this.veryPopular = false,
+      this.whole30 = false,
+      this.weightWatcherSmartPoints,
+      this.gaps,
+      this.instructions,
+      final List<String> cuisines = const [],
+      final List<String> dishTypes = const [],
+      final List<String> diets = const [],
+      final List<String> occasions = const [],
+      final List<ExtendedIngredient> extendedIngredients = const [],
+      this.summary})
       : _cuisines = cuisines,
         _dishTypes = dishTypes,
         _diets = diets,
@@ -561,57 +561,69 @@ class _$RecipeImpl implements _Recipe {
   @override
   final String title;
   @override
-  final String image;
+  final String? image;
   @override
-  final String imageType;
+  final String? imageType;
   @override
-  final int servings;
+  final int? servings;
   @override
-  final int readyInMinutes;
+  final int? readyInMinutes;
   @override
-  final String license;
+  final String? license;
   @override
-  final String sourceName;
+  final String? sourceName;
   @override
-  final String sourceUrl;
+  final String? sourceUrl;
   @override
-  final String spoonacularSourceUrl;
+  final String? spoonacularSourceUrl;
   @override
-  final double healthScore;
+  final double? healthScore;
   @override
-  final double spoonacularScore;
+  final double? spoonacularScore;
   @override
-  final double pricePerServing;
+  final double? pricePerServing;
   @override
+  @JsonKey()
   final bool cheap;
   @override
+  @JsonKey()
   final bool dairyFree;
   @override
+  @JsonKey()
   final bool glutenFree;
   @override
+  @JsonKey()
   final bool ketogenic;
   @override
+  @JsonKey()
   final bool lowFodmap;
   @override
+  @JsonKey()
   final bool sustainable;
   @override
+  @JsonKey()
   final bool vegan;
   @override
+  @JsonKey()
   final bool vegetarian;
   @override
+  @JsonKey()
   final bool veryHealthy;
   @override
+  @JsonKey()
   final bool veryPopular;
   @override
+  @JsonKey()
   final bool whole30;
   @override
-  final int weightWatcherSmartPoints;
+  final int? weightWatcherSmartPoints;
   @override
-  final String gaps;
+  final String? gaps;
   @override
-  final String instructions;
+  final String? instructions;
   final List<String> _cuisines;
   @override
+  @JsonKey()
   List<String> get cuisines {
     if (_cuisines is EqualUnmodifiableListView) return _cuisines;
     // ignore: implicit_dynamic_type
@@ -620,6 +632,7 @@ class _$RecipeImpl implements _Recipe {
 
   final List<String> _dishTypes;
   @override
+  @JsonKey()
   List<String> get dishTypes {
     if (_dishTypes is EqualUnmodifiableListView) return _dishTypes;
     // ignore: implicit_dynamic_type
@@ -628,6 +641,7 @@ class _$RecipeImpl implements _Recipe {
 
   final List<String> _diets;
   @override
+  @JsonKey()
   List<String> get diets {
     if (_diets is EqualUnmodifiableListView) return _diets;
     // ignore: implicit_dynamic_type
@@ -636,6 +650,7 @@ class _$RecipeImpl implements _Recipe {
 
   final List<String> _occasions;
   @override
+  @JsonKey()
   List<String> get occasions {
     if (_occasions is EqualUnmodifiableListView) return _occasions;
     // ignore: implicit_dynamic_type
@@ -644,6 +659,7 @@ class _$RecipeImpl implements _Recipe {
 
   final List<ExtendedIngredient> _extendedIngredients;
   @override
+  @JsonKey()
   List<ExtendedIngredient> get extendedIngredients {
     if (_extendedIngredients is EqualUnmodifiableListView)
       return _extendedIngredients;
@@ -652,7 +668,7 @@ class _$RecipeImpl implements _Recipe {
   }
 
   @override
-  final String summary;
+  final String? summary;
 
   @override
   String toString() {
@@ -779,37 +795,37 @@ abstract class _Recipe implements Recipe {
   const factory _Recipe(
       {required final int id,
       required final String title,
-      required final String image,
-      required final String imageType,
-      required final int servings,
-      required final int readyInMinutes,
-      required final String license,
-      required final String sourceName,
-      required final String sourceUrl,
-      required final String spoonacularSourceUrl,
-      required final double healthScore,
-      required final double spoonacularScore,
-      required final double pricePerServing,
-      required final bool cheap,
-      required final bool dairyFree,
-      required final bool glutenFree,
-      required final bool ketogenic,
-      required final bool lowFodmap,
-      required final bool sustainable,
-      required final bool vegan,
-      required final bool vegetarian,
-      required final bool veryHealthy,
-      required final bool veryPopular,
-      required final bool whole30,
-      required final int weightWatcherSmartPoints,
-      required final String gaps,
-      required final String instructions,
-      required final List<String> cuisines,
-      required final List<String> dishTypes,
-      required final List<String> diets,
-      required final List<String> occasions,
-      required final List<ExtendedIngredient> extendedIngredients,
-      required final String summary}) = _$RecipeImpl;
+      final String? image,
+      final String? imageType,
+      final int? servings,
+      final int? readyInMinutes,
+      final String? license,
+      final String? sourceName,
+      final String? sourceUrl,
+      final String? spoonacularSourceUrl,
+      final double? healthScore,
+      final double? spoonacularScore,
+      final double? pricePerServing,
+      final bool cheap,
+      final bool dairyFree,
+      final bool glutenFree,
+      final bool ketogenic,
+      final bool lowFodmap,
+      final bool sustainable,
+      final bool vegan,
+      final bool vegetarian,
+      final bool veryHealthy,
+      final bool veryPopular,
+      final bool whole30,
+      final int? weightWatcherSmartPoints,
+      final String? gaps,
+      final String? instructions,
+      final List<String> cuisines,
+      final List<String> dishTypes,
+      final List<String> diets,
+      final List<String> occasions,
+      final List<ExtendedIngredient> extendedIngredients,
+      final String? summary}) = _$RecipeImpl;
 
   factory _Recipe.fromJson(Map<String, dynamic> json) = _$RecipeImpl.fromJson;
 
@@ -818,27 +834,27 @@ abstract class _Recipe implements Recipe {
   @override
   String get title;
   @override
-  String get image;
+  String? get image;
   @override
-  String get imageType;
+  String? get imageType;
   @override
-  int get servings;
+  int? get servings;
   @override
-  int get readyInMinutes;
+  int? get readyInMinutes;
   @override
-  String get license;
+  String? get license;
   @override
-  String get sourceName;
+  String? get sourceName;
   @override
-  String get sourceUrl;
+  String? get sourceUrl;
   @override
-  String get spoonacularSourceUrl;
+  String? get spoonacularSourceUrl;
   @override
-  double get healthScore;
+  double? get healthScore;
   @override
-  double get spoonacularScore;
+  double? get spoonacularScore;
   @override
-  double get pricePerServing;
+  double? get pricePerServing;
   @override
   bool get cheap;
   @override
@@ -862,11 +878,11 @@ abstract class _Recipe implements Recipe {
   @override
   bool get whole30;
   @override
-  int get weightWatcherSmartPoints;
+  int? get weightWatcherSmartPoints;
   @override
-  String get gaps;
+  String? get gaps;
   @override
-  String get instructions;
+  String? get instructions;
   @override
   List<String> get cuisines;
   @override
@@ -878,7 +894,7 @@ abstract class _Recipe implements Recipe {
   @override
   List<ExtendedIngredient> get extendedIngredients;
   @override
-  String get summary;
+  String? get summary;
   @override
   @JsonKey(ignore: true)
   _$$RecipeImplCopyWith<_$RecipeImpl> get copyWith =>
@@ -891,18 +907,18 @@ ExtendedIngredient _$ExtendedIngredientFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ExtendedIngredient {
-  int get id => throw _privateConstructorUsedError;
-  String get aisle => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
-  String get consistency => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String? get aisle => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  String? get consistency => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get nameClean => throw _privateConstructorUsedError;
-  String get original => throw _privateConstructorUsedError;
-  String get originalName => throw _privateConstructorUsedError;
-  double get amount => throw _privateConstructorUsedError;
-  String get unit => throw _privateConstructorUsedError;
+  String? get nameClean => throw _privateConstructorUsedError;
+  String? get original => throw _privateConstructorUsedError;
+  String? get originalName => throw _privateConstructorUsedError;
+  double? get amount => throw _privateConstructorUsedError;
+  String? get unit => throw _privateConstructorUsedError;
   List<String> get meta => throw _privateConstructorUsedError;
-  Measures get measures => throw _privateConstructorUsedError;
+  Measures? get measures => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -917,20 +933,20 @@ abstract class $ExtendedIngredientCopyWith<$Res> {
       _$ExtendedIngredientCopyWithImpl<$Res, ExtendedIngredient>;
   @useResult
   $Res call(
-      {int id,
-      String aisle,
-      String image,
-      String consistency,
+      {int? id,
+      String? aisle,
+      String? image,
+      String? consistency,
       String name,
-      String nameClean,
-      String original,
-      String originalName,
-      double amount,
-      String unit,
+      String? nameClean,
+      String? original,
+      String? originalName,
+      double? amount,
+      String? unit,
       List<String> meta,
-      Measures measures});
+      Measures? measures});
 
-  $MeasuresCopyWith<$Res> get measures;
+  $MeasuresCopyWith<$Res>? get measures;
 }
 
 /// @nodoc
@@ -946,75 +962,79 @@ class _$ExtendedIngredientCopyWithImpl<$Res, $Val extends ExtendedIngredient>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? aisle = null,
-    Object? image = null,
-    Object? consistency = null,
+    Object? id = freezed,
+    Object? aisle = freezed,
+    Object? image = freezed,
+    Object? consistency = freezed,
     Object? name = null,
-    Object? nameClean = null,
-    Object? original = null,
-    Object? originalName = null,
-    Object? amount = null,
-    Object? unit = null,
+    Object? nameClean = freezed,
+    Object? original = freezed,
+    Object? originalName = freezed,
+    Object? amount = freezed,
+    Object? unit = freezed,
     Object? meta = null,
-    Object? measures = null,
+    Object? measures = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      aisle: null == aisle
+              as int?,
+      aisle: freezed == aisle
           ? _value.aisle
           : aisle // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
+              as String?,
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      consistency: null == consistency
+              as String?,
+      consistency: freezed == consistency
           ? _value.consistency
           : consistency // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      nameClean: null == nameClean
+      nameClean: freezed == nameClean
           ? _value.nameClean
           : nameClean // ignore: cast_nullable_to_non_nullable
-              as String,
-      original: null == original
+              as String?,
+      original: freezed == original
           ? _value.original
           : original // ignore: cast_nullable_to_non_nullable
-              as String,
-      originalName: null == originalName
+              as String?,
+      originalName: freezed == originalName
           ? _value.originalName
           : originalName // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
+              as String?,
+      amount: freezed == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
-              as double,
-      unit: null == unit
+              as double?,
+      unit: freezed == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       meta: null == meta
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      measures: null == measures
+      measures: freezed == measures
           ? _value.measures
           : measures // ignore: cast_nullable_to_non_nullable
-              as Measures,
+              as Measures?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $MeasuresCopyWith<$Res> get measures {
-    return $MeasuresCopyWith<$Res>(_value.measures, (value) {
+  $MeasuresCopyWith<$Res>? get measures {
+    if (_value.measures == null) {
+      return null;
+    }
+
+    return $MeasuresCopyWith<$Res>(_value.measures!, (value) {
       return _then(_value.copyWith(measures: value) as $Val);
     });
   }
@@ -1029,21 +1049,21 @@ abstract class _$$ExtendedIngredientImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
-      String aisle,
-      String image,
-      String consistency,
+      {int? id,
+      String? aisle,
+      String? image,
+      String? consistency,
       String name,
-      String nameClean,
-      String original,
-      String originalName,
-      double amount,
-      String unit,
+      String? nameClean,
+      String? original,
+      String? originalName,
+      double? amount,
+      String? unit,
       List<String> meta,
-      Measures measures});
+      Measures? measures});
 
   @override
-  $MeasuresCopyWith<$Res> get measures;
+  $MeasuresCopyWith<$Res>? get measures;
 }
 
 /// @nodoc
@@ -1057,68 +1077,68 @@ class __$$ExtendedIngredientImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? aisle = null,
-    Object? image = null,
-    Object? consistency = null,
+    Object? id = freezed,
+    Object? aisle = freezed,
+    Object? image = freezed,
+    Object? consistency = freezed,
     Object? name = null,
-    Object? nameClean = null,
-    Object? original = null,
-    Object? originalName = null,
-    Object? amount = null,
-    Object? unit = null,
+    Object? nameClean = freezed,
+    Object? original = freezed,
+    Object? originalName = freezed,
+    Object? amount = freezed,
+    Object? unit = freezed,
     Object? meta = null,
-    Object? measures = null,
+    Object? measures = freezed,
   }) {
     return _then(_$ExtendedIngredientImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      aisle: null == aisle
+              as int?,
+      aisle: freezed == aisle
           ? _value.aisle
           : aisle // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
+              as String?,
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      consistency: null == consistency
+              as String?,
+      consistency: freezed == consistency
           ? _value.consistency
           : consistency // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      nameClean: null == nameClean
+      nameClean: freezed == nameClean
           ? _value.nameClean
           : nameClean // ignore: cast_nullable_to_non_nullable
-              as String,
-      original: null == original
+              as String?,
+      original: freezed == original
           ? _value.original
           : original // ignore: cast_nullable_to_non_nullable
-              as String,
-      originalName: null == originalName
+              as String?,
+      originalName: freezed == originalName
           ? _value.originalName
           : originalName // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
+              as String?,
+      amount: freezed == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
-              as double,
-      unit: null == unit
+              as double?,
+      unit: freezed == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       meta: null == meta
           ? _value._meta
           : meta // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      measures: null == measures
+      measures: freezed == measures
           ? _value.measures
           : measures // ignore: cast_nullable_to_non_nullable
-              as Measures,
+              as Measures?,
     ));
   }
 }
@@ -1127,45 +1147,46 @@ class __$$ExtendedIngredientImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ExtendedIngredientImpl implements _ExtendedIngredient {
   const _$ExtendedIngredientImpl(
-      {required this.id,
-      required this.aisle,
-      required this.image,
-      required this.consistency,
+      {this.id,
+      this.aisle,
+      this.image,
+      this.consistency,
       required this.name,
-      required this.nameClean,
-      required this.original,
-      required this.originalName,
-      required this.amount,
-      required this.unit,
-      required final List<String> meta,
-      required this.measures})
+      this.nameClean,
+      this.original,
+      this.originalName,
+      this.amount,
+      this.unit,
+      final List<String> meta = const [],
+      this.measures})
       : _meta = meta;
 
   factory _$ExtendedIngredientImpl.fromJson(Map<String, dynamic> json) =>
       _$$ExtendedIngredientImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
-  final String aisle;
+  final String? aisle;
   @override
-  final String image;
+  final String? image;
   @override
-  final String consistency;
+  final String? consistency;
   @override
   final String name;
   @override
-  final String nameClean;
+  final String? nameClean;
   @override
-  final String original;
+  final String? original;
   @override
-  final String originalName;
+  final String? originalName;
   @override
-  final double amount;
+  final double? amount;
   @override
-  final String unit;
+  final String? unit;
   final List<String> _meta;
   @override
+  @JsonKey()
   List<String> get meta {
     if (_meta is EqualUnmodifiableListView) return _meta;
     // ignore: implicit_dynamic_type
@@ -1173,7 +1194,7 @@ class _$ExtendedIngredientImpl implements _ExtendedIngredient {
   }
 
   @override
-  final Measures measures;
+  final Measures? measures;
 
   @override
   String toString() {
@@ -1238,46 +1259,46 @@ class _$ExtendedIngredientImpl implements _ExtendedIngredient {
 
 abstract class _ExtendedIngredient implements ExtendedIngredient {
   const factory _ExtendedIngredient(
-      {required final int id,
-      required final String aisle,
-      required final String image,
-      required final String consistency,
+      {final int? id,
+      final String? aisle,
+      final String? image,
+      final String? consistency,
       required final String name,
-      required final String nameClean,
-      required final String original,
-      required final String originalName,
-      required final double amount,
-      required final String unit,
-      required final List<String> meta,
-      required final Measures measures}) = _$ExtendedIngredientImpl;
+      final String? nameClean,
+      final String? original,
+      final String? originalName,
+      final double? amount,
+      final String? unit,
+      final List<String> meta,
+      final Measures? measures}) = _$ExtendedIngredientImpl;
 
   factory _ExtendedIngredient.fromJson(Map<String, dynamic> json) =
       _$ExtendedIngredientImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
-  String get aisle;
+  String? get aisle;
   @override
-  String get image;
+  String? get image;
   @override
-  String get consistency;
+  String? get consistency;
   @override
   String get name;
   @override
-  String get nameClean;
+  String? get nameClean;
   @override
-  String get original;
+  String? get original;
   @override
-  String get originalName;
+  String? get originalName;
   @override
-  double get amount;
+  double? get amount;
   @override
-  String get unit;
+  String? get unit;
   @override
   List<String> get meta;
   @override
-  Measures get measures;
+  Measures? get measures;
   @override
   @JsonKey(ignore: true)
   _$$ExtendedIngredientImplCopyWith<_$ExtendedIngredientImpl> get copyWith =>
@@ -1290,8 +1311,8 @@ Measures _$MeasuresFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Measures {
-  Measure get us => throw _privateConstructorUsedError;
-  Measure get metric => throw _privateConstructorUsedError;
+  Measure? get us => throw _privateConstructorUsedError;
+  Measure? get metric => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1304,10 +1325,10 @@ abstract class $MeasuresCopyWith<$Res> {
   factory $MeasuresCopyWith(Measures value, $Res Function(Measures) then) =
       _$MeasuresCopyWithImpl<$Res, Measures>;
   @useResult
-  $Res call({Measure us, Measure metric});
+  $Res call({Measure? us, Measure? metric});
 
-  $MeasureCopyWith<$Res> get us;
-  $MeasureCopyWith<$Res> get metric;
+  $MeasureCopyWith<$Res>? get us;
+  $MeasureCopyWith<$Res>? get metric;
 }
 
 /// @nodoc
@@ -1323,33 +1344,41 @@ class _$MeasuresCopyWithImpl<$Res, $Val extends Measures>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? us = null,
-    Object? metric = null,
+    Object? us = freezed,
+    Object? metric = freezed,
   }) {
     return _then(_value.copyWith(
-      us: null == us
+      us: freezed == us
           ? _value.us
           : us // ignore: cast_nullable_to_non_nullable
-              as Measure,
-      metric: null == metric
+              as Measure?,
+      metric: freezed == metric
           ? _value.metric
           : metric // ignore: cast_nullable_to_non_nullable
-              as Measure,
+              as Measure?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $MeasureCopyWith<$Res> get us {
-    return $MeasureCopyWith<$Res>(_value.us, (value) {
+  $MeasureCopyWith<$Res>? get us {
+    if (_value.us == null) {
+      return null;
+    }
+
+    return $MeasureCopyWith<$Res>(_value.us!, (value) {
       return _then(_value.copyWith(us: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $MeasureCopyWith<$Res> get metric {
-    return $MeasureCopyWith<$Res>(_value.metric, (value) {
+  $MeasureCopyWith<$Res>? get metric {
+    if (_value.metric == null) {
+      return null;
+    }
+
+    return $MeasureCopyWith<$Res>(_value.metric!, (value) {
       return _then(_value.copyWith(metric: value) as $Val);
     });
   }
@@ -1363,12 +1392,12 @@ abstract class _$$MeasuresImplCopyWith<$Res>
       __$$MeasuresImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Measure us, Measure metric});
+  $Res call({Measure? us, Measure? metric});
 
   @override
-  $MeasureCopyWith<$Res> get us;
+  $MeasureCopyWith<$Res>? get us;
   @override
-  $MeasureCopyWith<$Res> get metric;
+  $MeasureCopyWith<$Res>? get metric;
 }
 
 /// @nodoc
@@ -1382,18 +1411,18 @@ class __$$MeasuresImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? us = null,
-    Object? metric = null,
+    Object? us = freezed,
+    Object? metric = freezed,
   }) {
     return _then(_$MeasuresImpl(
-      us: null == us
+      us: freezed == us
           ? _value.us
           : us // ignore: cast_nullable_to_non_nullable
-              as Measure,
-      metric: null == metric
+              as Measure?,
+      metric: freezed == metric
           ? _value.metric
           : metric // ignore: cast_nullable_to_non_nullable
-              as Measure,
+              as Measure?,
     ));
   }
 }
@@ -1401,15 +1430,15 @@ class __$$MeasuresImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$MeasuresImpl implements _Measures {
-  const _$MeasuresImpl({required this.us, required this.metric});
+  const _$MeasuresImpl({this.us, this.metric});
 
   factory _$MeasuresImpl.fromJson(Map<String, dynamic> json) =>
       _$$MeasuresImplFromJson(json);
 
   @override
-  final Measure us;
+  final Measure? us;
   @override
-  final Measure metric;
+  final Measure? metric;
 
   @override
   String toString() {
@@ -1444,17 +1473,16 @@ class _$MeasuresImpl implements _Measures {
 }
 
 abstract class _Measures implements Measures {
-  const factory _Measures(
-      {required final Measure us,
-      required final Measure metric}) = _$MeasuresImpl;
+  const factory _Measures({final Measure? us, final Measure? metric}) =
+      _$MeasuresImpl;
 
   factory _Measures.fromJson(Map<String, dynamic> json) =
       _$MeasuresImpl.fromJson;
 
   @override
-  Measure get us;
+  Measure? get us;
   @override
-  Measure get metric;
+  Measure? get metric;
   @override
   @JsonKey(ignore: true)
   _$$MeasuresImplCopyWith<_$MeasuresImpl> get copyWith =>
@@ -1467,9 +1495,9 @@ Measure _$MeasureFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Measure {
-  double get amount => throw _privateConstructorUsedError;
-  String get unitShort => throw _privateConstructorUsedError;
-  String get unitLong => throw _privateConstructorUsedError;
+  double? get amount => throw _privateConstructorUsedError;
+  String? get unitShort => throw _privateConstructorUsedError;
+  String? get unitLong => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1481,7 +1509,7 @@ abstract class $MeasureCopyWith<$Res> {
   factory $MeasureCopyWith(Measure value, $Res Function(Measure) then) =
       _$MeasureCopyWithImpl<$Res, Measure>;
   @useResult
-  $Res call({double amount, String unitShort, String unitLong});
+  $Res call({double? amount, String? unitShort, String? unitLong});
 }
 
 /// @nodoc
@@ -1497,23 +1525,23 @@ class _$MeasureCopyWithImpl<$Res, $Val extends Measure>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? amount = null,
-    Object? unitShort = null,
-    Object? unitLong = null,
+    Object? amount = freezed,
+    Object? unitShort = freezed,
+    Object? unitLong = freezed,
   }) {
     return _then(_value.copyWith(
-      amount: null == amount
+      amount: freezed == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
-              as double,
-      unitShort: null == unitShort
+              as double?,
+      unitShort: freezed == unitShort
           ? _value.unitShort
           : unitShort // ignore: cast_nullable_to_non_nullable
-              as String,
-      unitLong: null == unitLong
+              as String?,
+      unitLong: freezed == unitLong
           ? _value.unitLong
           : unitLong // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -1525,7 +1553,7 @@ abstract class _$$MeasureImplCopyWith<$Res> implements $MeasureCopyWith<$Res> {
       __$$MeasureImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double amount, String unitShort, String unitLong});
+  $Res call({double? amount, String? unitShort, String? unitLong});
 }
 
 /// @nodoc
@@ -1539,23 +1567,23 @@ class __$$MeasureImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? amount = null,
-    Object? unitShort = null,
-    Object? unitLong = null,
+    Object? amount = freezed,
+    Object? unitShort = freezed,
+    Object? unitLong = freezed,
   }) {
     return _then(_$MeasureImpl(
-      amount: null == amount
+      amount: freezed == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
-              as double,
-      unitShort: null == unitShort
+              as double?,
+      unitShort: freezed == unitShort
           ? _value.unitShort
           : unitShort // ignore: cast_nullable_to_non_nullable
-              as String,
-      unitLong: null == unitLong
+              as String?,
+      unitLong: freezed == unitLong
           ? _value.unitLong
           : unitLong // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -1563,18 +1591,17 @@ class __$$MeasureImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$MeasureImpl implements _Measure {
-  const _$MeasureImpl(
-      {required this.amount, required this.unitShort, required this.unitLong});
+  const _$MeasureImpl({this.amount, this.unitShort, this.unitLong});
 
   factory _$MeasureImpl.fromJson(Map<String, dynamic> json) =>
       _$$MeasureImplFromJson(json);
 
   @override
-  final double amount;
+  final double? amount;
   @override
-  final String unitShort;
+  final String? unitShort;
   @override
-  final String unitLong;
+  final String? unitLong;
 
   @override
   String toString() {
@@ -1613,18 +1640,18 @@ class _$MeasureImpl implements _Measure {
 
 abstract class _Measure implements Measure {
   const factory _Measure(
-      {required final double amount,
-      required final String unitShort,
-      required final String unitLong}) = _$MeasureImpl;
+      {final double? amount,
+      final String? unitShort,
+      final String? unitLong}) = _$MeasureImpl;
 
   factory _Measure.fromJson(Map<String, dynamic> json) = _$MeasureImpl.fromJson;
 
   @override
-  double get amount;
+  double? get amount;
   @override
-  String get unitShort;
+  String? get unitShort;
   @override
-  String get unitLong;
+  String? get unitLong;
   @override
   @JsonKey(ignore: true)
   _$$MeasureImplCopyWith<_$MeasureImpl> get copyWith =>

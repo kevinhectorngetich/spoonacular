@@ -9,43 +9,53 @@ part of 'recipe.dart';
 _$RecipeImpl _$$RecipeImplFromJson(Map<String, dynamic> json) => _$RecipeImpl(
       id: (json['id'] as num).toInt(),
       title: json['title'] as String,
-      image: json['image'] as String,
-      imageType: json['imageType'] as String,
-      servings: (json['servings'] as num).toInt(),
-      readyInMinutes: (json['readyInMinutes'] as num).toInt(),
-      license: json['license'] as String,
-      sourceName: json['sourceName'] as String,
-      sourceUrl: json['sourceUrl'] as String,
-      spoonacularSourceUrl: json['spoonacularSourceUrl'] as String,
-      healthScore: (json['healthScore'] as num).toDouble(),
-      spoonacularScore: (json['spoonacularScore'] as num).toDouble(),
-      pricePerServing: (json['pricePerServing'] as num).toDouble(),
-      cheap: json['cheap'] as bool,
-      dairyFree: json['dairyFree'] as bool,
-      glutenFree: json['glutenFree'] as bool,
-      ketogenic: json['ketogenic'] as bool,
-      lowFodmap: json['lowFodmap'] as bool,
-      sustainable: json['sustainable'] as bool,
-      vegan: json['vegan'] as bool,
-      vegetarian: json['vegetarian'] as bool,
-      veryHealthy: json['veryHealthy'] as bool,
-      veryPopular: json['veryPopular'] as bool,
-      whole30: json['whole30'] as bool,
+      image: json['image'] as String?,
+      imageType: json['imageType'] as String?,
+      servings: (json['servings'] as num?)?.toInt(),
+      readyInMinutes: (json['readyInMinutes'] as num?)?.toInt(),
+      license: json['license'] as String?,
+      sourceName: json['sourceName'] as String?,
+      sourceUrl: json['sourceUrl'] as String?,
+      spoonacularSourceUrl: json['spoonacularSourceUrl'] as String?,
+      healthScore: (json['healthScore'] as num?)?.toDouble(),
+      spoonacularScore: (json['spoonacularScore'] as num?)?.toDouble(),
+      pricePerServing: (json['pricePerServing'] as num?)?.toDouble(),
+      cheap: json['cheap'] as bool? ?? false,
+      dairyFree: json['dairyFree'] as bool? ?? false,
+      glutenFree: json['glutenFree'] as bool? ?? false,
+      ketogenic: json['ketogenic'] as bool? ?? false,
+      lowFodmap: json['lowFodmap'] as bool? ?? false,
+      sustainable: json['sustainable'] as bool? ?? false,
+      vegan: json['vegan'] as bool? ?? false,
+      vegetarian: json['vegetarian'] as bool? ?? false,
+      veryHealthy: json['veryHealthy'] as bool? ?? false,
+      veryPopular: json['veryPopular'] as bool? ?? false,
+      whole30: json['whole30'] as bool? ?? false,
       weightWatcherSmartPoints:
-          (json['weightWatcherSmartPoints'] as num).toInt(),
-      gaps: json['gaps'] as String,
-      instructions: json['instructions'] as String,
-      cuisines:
-          (json['cuisines'] as List<dynamic>).map((e) => e as String).toList(),
-      dishTypes:
-          (json['dishTypes'] as List<dynamic>).map((e) => e as String).toList(),
-      diets: (json['diets'] as List<dynamic>).map((e) => e as String).toList(),
-      occasions:
-          (json['occasions'] as List<dynamic>).map((e) => e as String).toList(),
-      extendedIngredients: (json['extendedIngredients'] as List<dynamic>)
-          .map((e) => ExtendedIngredient.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      summary: json['summary'] as String,
+          (json['weightWatcherSmartPoints'] as num?)?.toInt(),
+      gaps: json['gaps'] as String?,
+      instructions: json['instructions'] as String?,
+      cuisines: (json['cuisines'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      dishTypes: (json['dishTypes'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      diets:
+          (json['diets'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+              const [],
+      occasions: (json['occasions'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      extendedIngredients: (json['extendedIngredients'] as List<dynamic>?)
+              ?.map(
+                  (e) => ExtendedIngredient.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      summary: json['summary'] as String?,
     );
 
 Map<String, dynamic> _$$RecipeImplToJson(_$RecipeImpl instance) =>
@@ -88,18 +98,22 @@ Map<String, dynamic> _$$RecipeImplToJson(_$RecipeImpl instance) =>
 _$ExtendedIngredientImpl _$$ExtendedIngredientImplFromJson(
         Map<String, dynamic> json) =>
     _$ExtendedIngredientImpl(
-      id: (json['id'] as num).toInt(),
-      aisle: json['aisle'] as String,
-      image: json['image'] as String,
-      consistency: json['consistency'] as String,
+      id: (json['id'] as num?)?.toInt(),
+      aisle: json['aisle'] as String?,
+      image: json['image'] as String?,
+      consistency: json['consistency'] as String?,
       name: json['name'] as String,
-      nameClean: json['nameClean'] as String,
-      original: json['original'] as String,
-      originalName: json['originalName'] as String,
-      amount: (json['amount'] as num).toDouble(),
-      unit: json['unit'] as String,
-      meta: (json['meta'] as List<dynamic>).map((e) => e as String).toList(),
-      measures: Measures.fromJson(json['measures'] as Map<String, dynamic>),
+      nameClean: json['nameClean'] as String?,
+      original: json['original'] as String?,
+      originalName: json['originalName'] as String?,
+      amount: (json['amount'] as num?)?.toDouble(),
+      unit: json['unit'] as String?,
+      meta:
+          (json['meta'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+              const [],
+      measures: json['measures'] == null
+          ? null
+          : Measures.fromJson(json['measures'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$ExtendedIngredientImplToJson(
@@ -121,8 +135,12 @@ Map<String, dynamic> _$$ExtendedIngredientImplToJson(
 
 _$MeasuresImpl _$$MeasuresImplFromJson(Map<String, dynamic> json) =>
     _$MeasuresImpl(
-      us: Measure.fromJson(json['us'] as Map<String, dynamic>),
-      metric: Measure.fromJson(json['metric'] as Map<String, dynamic>),
+      us: json['us'] == null
+          ? null
+          : Measure.fromJson(json['us'] as Map<String, dynamic>),
+      metric: json['metric'] == null
+          ? null
+          : Measure.fromJson(json['metric'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$MeasuresImplToJson(_$MeasuresImpl instance) =>
@@ -133,9 +151,9 @@ Map<String, dynamic> _$$MeasuresImplToJson(_$MeasuresImpl instance) =>
 
 _$MeasureImpl _$$MeasureImplFromJson(Map<String, dynamic> json) =>
     _$MeasureImpl(
-      amount: (json['amount'] as num).toDouble(),
-      unitShort: json['unitShort'] as String,
-      unitLong: json['unitLong'] as String,
+      amount: (json['amount'] as num?)?.toDouble(),
+      unitShort: json['unitShort'] as String?,
+      unitLong: json['unitLong'] as String?,
     );
 
 Map<String, dynamic> _$$MeasureImplToJson(_$MeasureImpl instance) =>
