@@ -32,7 +32,7 @@ jobs:
       # Run Flutter build runner
 
       - name: Build Runner
-        run: dart run build runner --delete-conflicting-outputs
+        run: dart run build_runner build --delete-conflicting-outputs
 
       # Build the release APK 
       - name: Build APK
