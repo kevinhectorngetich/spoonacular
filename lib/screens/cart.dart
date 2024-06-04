@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:spoonacular/constants/colors.dart';
+import 'package:spoonacular/screens/home_screen.dart';
+import 'package:spoonacular/services/recipe_service.dart';
+import 'package:spoonacular/state/recipe_store.dart';
 
 class Cart extends StatefulWidget {
-  const Cart({super.key});
+  const Cart({Key? key}) : super(key: key);
 
   @override
   State<Cart> createState() => _CartState();
@@ -11,53 +16,90 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
+    final recipeStore = context.watch<RecipeStore>();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cart'),
       ),
       body: SafeArea(
-        child: Stack(
-          children: [
-            const Column(
-              children: [
-                // List of cart items
-                CartItem(
-                  imageUrl:
-                      'https://cdn.britannica.com/98/235798-050-3C3BA15D/Hamburger-and-french-fries-paper-box.jpg',
-                  title: 'Product Title',
-                  quantity: 1,
-                  price: 10.00,
-                ),
-                CartItem(
-                  imageUrl:
-                      'https://cdn.britannica.com/98/235798-050-3C3BA15D/Hamburger-and-french-fries-paper-box.jpg',
-                  title: 'Another Product Title',
-                  quantity: 2,
-                  price: 20.00,
-                ),
-                // ... more cart items
-              ],
-            ),
-
-            // Checkout button positioned at the bottom
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
+        child: Observer(
+          builder: (context) {
+            if (recipeStore.cartItems.isEmpty) {
+              return const Center(
+                child: Text('Cart is empty'),
+              );
+            } else {
+              return ListView.builder(
+                itemCount: recipeStore.cartItems.length,
+                itemBuilder: (context, index) {
+                  final item = recipeStore.cartItems[index];
+                  return Dismissible(
+                    key: UniqueKey(),
+                    onDismissed: (_) {
+                      recipeStore.removeFromCart(item);
+                    },
+                    child: CartItem(
+                        imageUrl: item.image ?? '',
+                        title: item.title,
+                        price: item.pricePerServing ?? 0,
+                        onRemove: () {
+                          recipeStore.removeFromCart(item);
+                        }),
+                  );
+                },
+              );
+            }
+          },
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Observer(
+          builder: (context) {
+            return InkWell(
+              onTap: () async {
+                final body = {
+                  'userId': 1,
+                  'id': 1,
+                  'title': 'foo',
+                  'body': 'bar'
+                };
+                final response = await RecipeService().processPayment(body);
+                // future update to success or a suitable condition
+                if (response.isNotEmpty) {
+                  recipeStore.clearCart();
+                  if (!context.mounted) return;
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const SuccessScreen(),
+                  ));
+                } else {
+                  if (!context.mounted) return;
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(response),
+                      duration: const Duration(seconds: 2),
+                    ),
+                  );
+                }
+              },
               child: Container(
-                color: myLightGreen,
+                decoration: BoxDecoration(
+                  color: myLightGreen,
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 padding: const EdgeInsets.all(10.0),
-                child: TextButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    // backgroundColor: WidgetStateProperty.all(myLightGreen),
-                    foregroundColor: WidgetStateProperty.all(Colors.white),
+                child: Center(
+                  child: Text(
+                    'Checkout: Ksh ${recipeStore.totalPrice.toStringAsFixed(2)}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                  child: const Text('Checkout: Ksh 3000'),
                 ),
               ),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );
@@ -67,16 +109,16 @@ class _CartState extends State<Cart> {
 class CartItem extends StatelessWidget {
   final String imageUrl;
   final String title;
-  final int quantity;
   final double price;
+  final VoidCallback onRemove;
 
   const CartItem({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.title,
-    required this.quantity,
     required this.price,
-  }) : super(key: key);
+    required this.onRemove,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -92,25 +134,82 @@ class CartItem extends StatelessWidget {
           ),
           const SizedBox(width: 10.0),
           // Product details
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(fontSize: 16),
-              ),
-              Text(
-                'Quantity: $quantity',
-                style: const TextStyle(fontSize: 14, color: Colors.grey),
-              ),
-              Text(
-                '\$${price.toStringAsFixed(2)}',
-                style:
-                    const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  '\$${price.toStringAsFixed(2)}',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          IconButton(
+            onPressed: onRemove,
+            icon: const Icon(Icons.delete),
+            color: Colors.red,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class SuccessScreen extends StatelessWidget {
+  const SuccessScreen({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.check_circle,
+              color: Colors.green,
+              size: 100,
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Payment Success',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: InkWell(
+          onTap: () {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (builder) => const HomeScreen()));
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: myLightGreen,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            padding: const EdgeInsets.all(10.0),
+            child: const Center(
+              child: Text(
+                'Done',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

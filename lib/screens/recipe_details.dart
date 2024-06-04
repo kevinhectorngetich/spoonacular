@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:spoonacular/data/models/recipe.dart';
 import 'package:spoonacular/screens/cart.dart';
 import 'package:spoonacular/constants/colors.dart';
 import 'package:spoonacular/constants/sized_box.dart';
 import 'package:spoonacular/constants/text_styles.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:spoonacular/state/recipe_store.dart';
+import 'package:spoonacular/widgets/app_bar.dart';
 
 class RecipeDetails extends StatefulWidget {
   final Recipe recipe;
@@ -17,16 +21,10 @@ class RecipeDetails extends StatefulWidget {
 class _RecipeDetailsState extends State<RecipeDetails> {
   @override
   Widget build(BuildContext context) {
+    final recipeStore = context.watch<RecipeStore>();
+    final isRecipeInCart = recipeStore.cartItems.contains(widget.recipe);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Spoonacular'),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.shopping_cart),
-          ),
-        ],
-      ),
+      appBar: myAppBar(context),
       body: SafeArea(
         child: Stack(
           children: [
@@ -66,44 +64,9 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                       ),
                     ),
                     gapH20,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(width: 0.5),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Row(
-                            children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.remove_rounded,
-                                  size: 30,
-                                ),
-                              ),
-                              gapW8,
-                              const Text(
-                                '1',
-                                style: kTitleStyle,
-                              ),
-                              gapW8,
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.add,
-                                  size: 30,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Text(
-                          'Ksh ${widget.recipe.pricePerServing}',
-                          style: kTitleStyle,
-                        ),
-                      ],
+                    Text(
+                      'Ksh ${widget.recipe.pricePerServing}',
+                      style: kTitleStyle,
                     ),
                     gapH20,
                     const Text(
@@ -161,23 +124,38 @@ class _RecipeDetailsState extends State<RecipeDetails> {
               bottom: 0,
               left: 0,
               right: 0,
-              child: Container(
-                color: Colors.white, // Set background color to white
-                padding:
-                    const EdgeInsets.all(10.0), // Add padding around the button
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (builder) => const Cart(),
-                      ),
-                    );
+              child: // Display "Add to Cart" or "Remove from Cart" button
+                  Container(
+                color: Colors.white,
+                padding: const EdgeInsets.all(10.0),
+                child: Observer(
+                  builder: (context) {
+                    return recipeStore.isRecipeInCart(widget.recipe)
+                        ? TextButton(
+                            onPressed: () {
+                              recipeStore.removeFromCart(widget.recipe);
+                            },
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  WidgetStateProperty.all(Colors.red),
+                              foregroundColor:
+                                  WidgetStateProperty.all(Colors.white),
+                            ),
+                            child: const Text('Remove from Cart'),
+                          )
+                        : TextButton(
+                            onPressed: () {
+                              recipeStore.addToCart(widget.recipe);
+                            },
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  WidgetStateProperty.all(myLightGreen),
+                              foregroundColor:
+                                  WidgetStateProperty.all(Colors.white),
+                            ),
+                            child: const Text('Add to Cart'),
+                          );
                   },
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all(myLightGreen),
-                    foregroundColor: WidgetStateProperty.all(Colors.white),
-                  ),
-                  child: const Text('Add to Cart'),
                 ),
               ),
             ),

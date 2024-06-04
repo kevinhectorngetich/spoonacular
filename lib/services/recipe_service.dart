@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:spoonacular/data/models/recipe.dart';
 
@@ -18,6 +20,27 @@ class RecipeService {
     } on DioException catch (e) {
       // Handle error
       throw Exception('Failed to fetch recipes: $e');
+    }
+  }
+
+  Future<String> processPayment(Map body) async {
+    try {
+      final response = await dio.post(
+        'https://jsonplaceholder.typicode.com/posts',
+        data: json.encode(body),
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
+      );
+
+      if (response.statusCode == 200) {
+        return "success";
+      } else {
+        return "Failed to process payment";
+      }
+    } on DioException catch (e) {
+      // Handle Dio errors here
+      return "Failed to process payment: ${e.message}";
     }
   }
 }

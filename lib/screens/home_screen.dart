@@ -3,8 +3,10 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:spoonacular/constants/colors.dart';
 import 'package:spoonacular/constants/sized_box.dart';
+import 'package:spoonacular/screens/cart.dart';
 import 'package:spoonacular/screens/recipe_details.dart';
 import 'package:spoonacular/state/recipe_store.dart';
+import 'package:spoonacular/widgets/app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,15 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final recipeStore = context.watch<RecipeStore>();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Spoonacular'),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.shopping_cart),
-          ),
-        ],
-      ),
+      appBar: myAppBar(context),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
