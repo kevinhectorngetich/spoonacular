@@ -1,10 +1,11 @@
 import 'package:mobx/mobx.dart';
-import 'package:spoonacular/data/models/recipe.dart';
+import 'package:spoonacular/data/models/recipe/recipe.dart';
 import 'package:spoonacular/services/isar_service.dart';
 import 'package:spoonacular/services/recipe_service.dart';
 
 part 'recipe_store.g.dart';
 
+// ignore: library_private_types_in_public_api
 class RecipeStore = _RecipeStore with _$RecipeStore;
 
 abstract class _RecipeStore with Store {
@@ -21,7 +22,6 @@ abstract class _RecipeStore with Store {
   @observable
   ObservableList<Recipe> cartItems = ObservableList<Recipe>();
 
-  @computed
   bool isRecipeInCart(Recipe recipe) => cartItems.contains(recipe);
 
   @computed

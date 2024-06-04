@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "542140510710",
+    "project_id": "spoonacular-food",
+    "storage_bucket": "spoonacular-food.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542140510710:android:c943fc13244f3342a297d7",
+        "android_client_info": {
+          "package_name": "com.example.spoonacular"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpBzJSVIOFG0K4ygS_WxTxybJ42BEWzjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

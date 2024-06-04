@@ -1,6 +1,6 @@
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:spoonacular/data/models/recipe.dart';
+import 'package:spoonacular/data/models/recipe/recipe.dart';
 import 'package:spoonacular/data/schemas/converters.dart';
 import 'package:spoonacular/data/schemas/isar_recipe.dart';
 

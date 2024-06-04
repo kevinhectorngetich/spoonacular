@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:spoonacular/constants/colors.dart';
 import 'package:spoonacular/constants/sized_box.dart';
-import 'package:spoonacular/screens/cart.dart';
 import 'package:spoonacular/screens/recipe_details.dart';
 import 'package:spoonacular/state/recipe_store.dart';
 import 'package:spoonacular/widgets/app_bar.dart';

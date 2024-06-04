@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:spoonacular/data/models/recipe.dart';
-import 'package:spoonacular/screens/cart.dart';
+import 'package:spoonacular/data/models/recipe/recipe.dart';
 import 'package:spoonacular/constants/colors.dart';
 import 'package:spoonacular/constants/sized_box.dart';
 import 'package:spoonacular/constants/text_styles.dart';
@@ -22,7 +21,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
   @override
   Widget build(BuildContext context) {
     final recipeStore = context.watch<RecipeStore>();
-    final isRecipeInCart = recipeStore.cartItems.contains(widget.recipe);
+    recipeStore.cartItems.contains(widget.recipe);
     return Scaffold(
       appBar: myAppBar(context),
       body: SafeArea(

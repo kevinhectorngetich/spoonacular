@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:spoonacular/data/models/recipe.dart';
+import 'package:spoonacular/data/models/recipe/recipe.dart';
 
 class RecipeService {
   final Dio dio = Dio();

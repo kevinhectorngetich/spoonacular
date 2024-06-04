@@ -1,4 +1,4 @@
-import 'package:spoonacular/data/models/recipe.dart';
+import 'package:spoonacular/data/models/recipe/recipe.dart';
 import 'package:spoonacular/data/schemas/isar_recipe.dart';
 
 Recipe isarToRecipe(IsarRecipe isarRecipe) {

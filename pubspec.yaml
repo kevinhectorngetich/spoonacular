@@ -16,7 +16,7 @@ dependencies:
 
   cupertino_icons: ^1.0.6
   google_fonts: ^6.2.1
-  provider: ^6.1.2
+
   flutter_widget_from_html: ^0.15.0
   dio: ^5.4.3+1
   mobx: ^2.0.6+1
@@ -28,6 +28,10 @@ dependencies:
   isar: *isar_version
   isar_flutter_libs: *isar_version
   path_provider: ^2.1.3
+  hive: ^2.2.3
+  provider: ^6.1.2
+  hive_flutter: ^1.1.0
+  firebase_core: ^2.32.0
 
 dev_dependencies:
   flutter_test:
@@ -37,6 +41,7 @@ dev_dependencies:
   freezed: ^2.5.2
   build_runner: ^2.4.10
   isar_generator: *isar_version
+  hive_generator: ^2.0.1
 
 flutter:
   uses-material-design: true

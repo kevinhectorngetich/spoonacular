@@ -4,10 +4,11 @@ import 'package:provider/provider.dart';
 import 'package:spoonacular/constants/colors.dart';
 import 'package:spoonacular/screens/home_screen.dart';
 import 'package:spoonacular/services/recipe_service.dart';
+import 'package:spoonacular/state/auth_store.dart';
 import 'package:spoonacular/state/recipe_store.dart';
 
 class Cart extends StatefulWidget {
-  const Cart({Key? key}) : super(key: key);
+  const Cart({super.key});
 
   @override
   State<Cart> createState() => _CartState();
@@ -17,10 +18,16 @@ class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     final recipeStore = context.watch<RecipeStore>();
+    final authStore = context.watch<AuthStore>();
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cart'),
+        title: Observer(
+          builder: (context) {
+            final username = authStore.user?.username ?? 'User';
+            return Text('$username\'s Cart');
+          },
+        ),
       ),
       body: SafeArea(
         child: Observer(
