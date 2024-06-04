@@ -38,11 +38,10 @@ jobs:
         run: ls build/app/outputs/flutter-apk/ 
 
       # Upload APK to Firebase App Distribution (using improved action)
-      - name: Upload to Firebase App Distribution
-        uses: firebase/app-distribution-action@v1.1.1
+      - name: upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
-          appId: ${{ secrets.FIREBASE_APP_ID }}
-          serviceCredentialsFile: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+          appId: ${{secrets.FIREBASE_APP_ID}}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
-          releaseNotesFile: release_notes.txt  # Optional
-          apkPath: build/app/outputs/flutter-apk/app-release.apk
+          file: build/app/outputs/flutter-apk/app-release.apk
