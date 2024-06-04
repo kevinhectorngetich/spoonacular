@@ -1,51 +1,47 @@
-/// Something descriptive to explain what this workflow does.
-name: PushToTesters 
+# Descriptive name for the workflow
+name: Push Flutter App to Firebase Testers
 
-/// These are the events which will trigger the automation process/
-on: [push] 
-    
-    /// Name of the GitHub branch on which the workflow jobs will be ran on.
+# Trigger the workflow on pushes to the 'main' branch
+on:
+  push:
     branches:
       - main
 
-
-/// These are the jobs that will be run when an event is triggered.
-jobs: 
-
-  /// Name of this particular job.
-  build_and_deploy: 
-    
-    /// Platform
+# Define the job to build and deploy the app
+jobs:
+  build_and_deploy:
+    # Use a self-hosted runner or a matrix of runners for different OSes
     runs-on: ubuntu-latest 
 
-    /// Setup the platform and the required dependencies
-    /// Example - Java and Flutter
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-java@v1
+      # Checkout the repository code
+      - uses: actions/checkout@v3  # Use the latest version for stability
+
+      # Setup Java (Flutter's requirement)
+      - uses: actions/setup-java@v3
         with:
-          java-version: '12.x'
-      - uses: subosito/flutter-action@v1
+          distribution: 'temurin'  # Use a recommended distribution
+          java-version: 17  # Use a current LTS Java version
+          
+      # Setup Flutter (cache dependencies for faster builds)
+      - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          cache: true
 
-      /// Builds Apk
-      - name: Build Gradle
+      # Build the release APK 
+      - name: Build APK
         run: flutter build apk --release
-      - run: ls build/app/outputs/flutter-apk
+        
+      # Show APK location (optional for debugging)
+      - name: Show APK location
+        run: ls build/app/outputs/flutter-apk/ 
 
-      /// Finds and pushes the apk file 
-      /// from the workflow directory to Firebase App distribution.
-      - name: Upload artifact to Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
+      # Upload APK to Firebase App Distribution (using improved action)
+      - name: Upload to Firebase App Distribution
+        uses: step-security/firebase-distribute@v1.2.0
         with:
-          /// We'll be setting these up later in the tutorial.
-          appId: ${{secrets.APP_ID}} 
-
-          /// We'll be setting these up later in the tutorial.
-          serviceCredentialsFileContent: ${{secrets.CREDENTIAL_FILE_CONTENT}}
-
-          /// This is the name of the group of tester, 
-          /// to whom the apk will be distributed.
+          firebase_app_id: ${{ secrets.FIREBASE_APP_ID }}
+          firebase_service_account_key: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
           groups: testers
-          file: build/app/outputs/flutter-apk/app-release.apk
+          apk_path: build/app/outputs/flutter-apk/app-release.apk
