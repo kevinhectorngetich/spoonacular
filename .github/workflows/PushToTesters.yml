@@ -28,6 +28,11 @@ jobs:
         with:
           channel: 'stable'
           cache: true
+      
+      # Run Flutter build runner
+
+      - name: Build Runner
+        run: dart run build runner --delete-conflicting-outputs
 
       # Build the release APK 
       - name: Build APK
