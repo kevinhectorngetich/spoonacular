@@ -39,9 +39,10 @@ jobs:
 
       # Upload APK to Firebase App Distribution (using improved action)
       - name: Upload to Firebase App Distribution
-        uses: step-security/firebase-distribute@v1.2.0
+        uses: firebase/app-distribution-action@v1.1.1
         with:
-          firebase_app_id: ${{ secrets.FIREBASE_APP_ID }}
-          firebase_service_account_key: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          serviceCredentialsFile: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
           groups: testers
-          apk_path: build/app/outputs/flutter-apk/app-release.apk
+          releaseNotesFile: release_notes.txt  # Optional
+          apkPath: build/app/outputs/flutter-apk/app-release.apk
