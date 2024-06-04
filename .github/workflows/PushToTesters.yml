@@ -2,11 +2,11 @@
 name: PushToTesters 
 
 /// These are the events which will trigger the automation process/
-on: [pull_request, push] 
+on: [push] 
     
     /// Name of the GitHub branch on which the workflow jobs will be ran on.
     branches:
-      - master
+      - main
 
 
 /// These are the jobs that will be run when an event is triggered.
