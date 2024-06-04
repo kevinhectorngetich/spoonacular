@@ -13,9 +13,9 @@ abstract class _AuthStore with Store {
 
   @action
   Future<void> signUp(String username, String email, String password) async {
-    final userBox = await Hive.openBox<User>('userBox');
+    final userBox = await Hive.openBox('userBox');
     user = User(username: username, email: email, password: password);
-    await userBox.put('user', user!);
+    await userBox.put('user', user!.toJson());
   }
 
   @action
